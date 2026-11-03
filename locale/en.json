@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "My Bookshelf",
+    "description": "A Host-backed bookshelf and reading log: start and finish dates, page progress, tags, excerpts, yearly stats, Goodreads/Douban import and export. The DSH assistant can read and update it through bookshelf_* tools."
+  }
+}

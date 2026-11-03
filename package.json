@@ -1,0 +1,33 @@
+{
+  "name": "@local/dsh-bookshelf",
+  "version": "1.2.0",
+  "private": true,
+  "description": "A durable, Host-backed personal bookshelf and reading log (dates, page progress, tags, excerpts, yearly stats) that the DSH agent can read and update through bookshelf_* tools.",
+  "type": "module",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-locale",
+        "@deepseek-ai/dsh-client-ui-layout"
+      ]
+    }
+  }
+}
