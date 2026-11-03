@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "bookshelf-harness",
+      "runtimeExecutable": "node",
+      "runtimeArgs": ["dev/harness.mjs"],
+      "port": 47821
+    }
+  ]
+}

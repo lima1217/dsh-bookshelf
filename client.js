@@ -4360,6 +4360,20 @@ window.__ModuleLoader__.load({
       )
     }
 
+    // test/ loads this file in a vm and checks these against the Host half.
+    if (globalThis.__DSH_BOOKSHELF_TEST__) {
+      Object.assign(globalThis.__DSH_BOOKSHELF_TEST__, {
+        zh,
+        en,
+        normalizeBook,
+        applyStatus,
+        mergeShelves,
+        yearStats,
+        parseImport,
+        exportCsv,
+      })
+    }
+
     return {
       inject: ['slots', 'locale'],
       apply(ctx) {

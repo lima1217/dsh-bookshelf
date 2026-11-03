@@ -1,0 +1,2 @@
+- Before changing how this plugin talks to DSH (routes, agent tools, `ctx` services, loading) → read `docs/dsh-plugin-api.md`.
+- To see UI changes in a browser → `dev/harness.mjs` (preview name `bookshelf-harness`).

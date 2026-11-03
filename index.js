@@ -853,6 +853,10 @@ function registerTools(ctx) {
       return { action: result.action, book: bookView(stored, false), revision: saved.revision }
     },
   }), 'bookshelf: tool excerpt')
+
+  if (ctx.logger && typeof ctx.logger.info === 'function') {
+    ctx.logger.info('bookshelf: registered 5 agent tools (bookshelf_list, bookshelf_stats, bookshelf_add, bookshelf_update, bookshelf_add_excerpt)')
+  }
 }
 
 export function apply(ctx) {

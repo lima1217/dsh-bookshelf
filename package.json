@@ -4,6 +4,10 @@
   "private": true,
   "description": "A durable, Host-backed personal bookshelf and reading log (dates, page progress, tags, excerpts, yearly stats) that the DSH agent can read and update through bookshelf_* tools.",
   "type": "module",
+  "scripts": {
+    "check": "node --check index.js && node --check client.js",
+    "test": "npm run check && node --test test/"
+  },
   "exports": {
     ".": "./index.js",
     "./client": "./client.js",
