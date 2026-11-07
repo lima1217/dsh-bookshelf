@@ -19,6 +19,15 @@ DeepSeek Harness（DSH）的个人书架与阅读记录插件。书架数据保�
 - 联网补全封面和简介
 - 导入 Goodreads、豆瓣的 CSV 导出文件，也可以把书架导出为 CSV
 - 中英文界面，跟随 DSH 的浅色 / 深色主题
+- 三种视图：按状态分栏、列表、封面墙
+
+## 更多截图
+
+| 列表视图 | 封面墙 |
+|---|---|
+| ![列表视图](docs/screenshots/list-zh-light.png) | ![封面墙](docs/screenshots/grid-zh-light.png) |
+| **编辑书籍** | **阅读统计** |
+| ![编辑书籍](docs/screenshots/edit-reading-zh-light.png) | ![阅读统计](docs/screenshots/stats-zh-light.png) |
 
 ## Agent 工具
 
