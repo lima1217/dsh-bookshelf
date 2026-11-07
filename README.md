@@ -4,12 +4,7 @@ DeepSeek Harness（DSH）的个人书架与阅读记录插件。书架数据保�
 
 *A personal bookshelf and reading log plugin for DeepSeek Harness. Data stays on your machine, and the DSH agent can read and update it through `bookshelf_*` tools. UI available in Chinese and English.*
 
-| | 浅色 Light | 深色 Dark |
-|---|---|---|
-| 中文 | ![中文浅色](docs/screenshots/board-zh-light.png) | ![中文深色](docs/screenshots/board-zh-dark.png) |
-| English | ![English light](docs/screenshots/board-en-light.png) | ![English dark](docs/screenshots/board-en-dark.png) |
-
-截图来自 `node dev/audit.mjs --shots`，书架里是示例数据。
+![按状态分栏](docs/screenshots/board.png)
 
 ## 功能
 
@@ -21,13 +16,11 @@ DeepSeek Harness（DSH）的个人书架与阅读记录插件。书架数据保�
 - 中英文界面，跟随 DSH 的浅色 / 深色主题
 - 三种视图：按状态分栏、列表、封面墙
 
-## 更多截图
+## 视图
 
-| 列表视图 | 封面墙 |
+| 列表 | 封面墙 |
 |---|---|
-| ![列表视图](docs/screenshots/list-zh-light.png) | ![封面墙](docs/screenshots/grid-zh-light.png) |
-| **编辑书籍** | **阅读统计** |
-| ![编辑书籍](docs/screenshots/edit-reading-zh-light.png) | ![阅读统计](docs/screenshots/stats-zh-light.png) |
+| ![列表](docs/screenshots/list.png) | ![封面墙](docs/screenshots/covers.png) |
 
 ## Agent 工具
 
