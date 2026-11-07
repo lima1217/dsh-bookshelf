@@ -9,3 +9,4 @@ General DSH plugin knowledge (install paths, `ctx` services, agent tool format, 
 - `normalizeBook`, `applyStatus`, `yearStats`, and `titleKey` exist in both `index.js` and `client.js`; `test/parity.test.mjs` keeps them in step, so change both together.
 - `client.js` sections are marked with `/* ── name ─── */`: `grep -n '/\* ──' client.js` lists them.
 - Browser check: `dev/harness.mjs` (preview name `bookshelf-harness`).
+- Harness query: `?lang=zh|en|pseudo&theme=light|dark`; theme tokens are the real DSH values. `dev/audit.mjs` screenshots and measures every view (font sizes, accent count, contrast, clipping, axe); `dev/compare-pdf.mjs` builds a before/after PDF. Review notes: `docs/review/`.

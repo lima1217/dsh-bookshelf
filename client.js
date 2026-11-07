@@ -44,9 +44,9 @@ window.__ModuleLoader__.load({
 
     const STATUSES = ['want', 'reading', 'read']
     const STATUS_META = {
-      want: { label: 'status.want', hint: 'status.wantHint' },
-      reading: { label: 'status.reading', hint: 'status.readingHint' },
-      read: { label: 'status.read', hint: 'status.readHint' },
+      want: { label: 'status.want' },
+      reading: { label: 'status.reading' },
+      read: { label: 'status.read' },
     }
 
     const SORT_OPTIONS = [
@@ -67,127 +67,69 @@ window.__ModuleLoader__.load({
       ['#26584E', '#E4F1EB'],
     ]
 
-    const SEED_BOOKS = [
-      {
-        id: 'seed-possibility',
-        title: '可能性的艺术',
-        author: '刘瑜',
-        status: 'want',
-        progress: 0,
-        rating: 0,
-        note: '比较政治学启蒙，先补上这一课。',
-        addedAt: Date.UTC(2026, 9, 28),
-      },
-      {
-        id: 'seed-wanli',
-        title: '万历十五年',
-        author: '黄仁宇',
-        status: 'want',
-        progress: 0,
-        rating: 0,
-        note: '',
-        addedAt: Date.UTC(2026, 9, 21),
-      },
-      {
-        id: 'seed-sapiens',
-        title: '人类简史',
-        author: '尤瓦尔·赫拉利',
-        status: 'want',
-        progress: 0,
-        rating: 0,
-        note: '想重读一遍，看看十年前划过的线。',
-        addedAt: Date.UTC(2026, 8, 30),
-      },
-      {
-        id: 'seed-inside',
-        title: '置身事内',
-        author: '兰小欢',
-        status: 'reading',
-        progress: 52,
-        rating: 0,
-        note: '读到地方政府与土地财政，信息量很大。',
-        addedAt: Date.UTC(2026, 9, 15),
-      },
-      {
-        id: 'seed-solitude',
-        title: '百年孤独',
-        author: '加西亚·马尔克斯',
-        status: 'reading',
-        progress: 23,
-        rating: 0,
-        note: '人物名字有点绕，慢慢读。',
-        addedAt: Date.UTC(2026, 9, 2),
-      },
-      {
-        id: 'seed-prince',
-        title: '小王子',
-        author: '圣埃克苏佩里',
-        status: 'read',
-        progress: 100,
-        rating: 5,
-        note: '真正重要的东西，用眼睛是看不见的。',
-        addedAt: Date.UTC(2026, 8, 18),
-      },
-      {
-        id: 'seed-ditan',
-        title: '我与地坛',
-        author: '史铁生',
-        status: 'read',
-        progress: 100,
-        rating: 5,
-        note: '在园子里坐一会儿，也是一种阅读。',
-        addedAt: Date.UTC(2026, 7, 12),
-      },
-      {
-        id: 'seed-algernon',
-        title: '献给阿尔吉侬的花束',
-        author: '丹尼尔·凯斯',
-        status: 'read',
-        progress: 100,
-        rating: 4,
-        note: '读到最后几页，心里空了一块。',
-        addedAt: Date.UTC(2026, 6, 3),
-      },
-    ]
-
     const zh = {
       'entry.label': '我的书架',
-      'panel.eyebrow': '私人藏书',
       'panel.title': '我的书架',
-      'panel.subtitle': '想读的、在手的、读完的，都在这里。',
-      'panel.shelfCount': '本藏书',
+      'panel.finishedThisYear': '今年读完 {count} 本',
+      'panel.finishedThisYearOne': '今年读完 {count} 本',
       'panel.filteredCount': '找到 {count} 本',
-      'panel.summary': '{reading} 本在读 · {read} 本已读',
-      'action.addTo': '添加一本{status}的书',
+      'action.add': '添加书',
+      'action.addTo': '添加到「{status}」',
       'action.close': '关闭',
+      'action.cancel': '取消',
+      'action.save': '保存',
+      'action.create': '添加',
+      'action.delete': '删除',
+      'action.undo': '撤销',
+      'action.clearRating': '清除评分',
+      'action.import': '导入',
+      'action.importTitle': '导入书单',
+      'action.export': '导出',
+      'action.exportTitle': '导出书架',
+      'action.stats': '阅读统计',
+      'action.lookup': '补全信息',
+      'action.lookupHint': '从网上查找封面、作者和简介',
+      'action.lookupBusy': '正在查找…',
+      'action.stop': '停止',
+      'action.dismiss': '知道了',
+      'toast.deleted': '已删除《{title}》',
+      'toast.merged': '已同步其他窗口或 AI 助手的改动',
       'status.want': '想读',
       'status.reading': '在读',
       'status.read': '已读',
-      'status.wantHint': '先收进来，等一个合适的下午。',
-      'status.readingHint': '正在翻开的书。',
-      'status.readHint': '读完的书，留一枚小小印记。',
       'status.label': '阅读状态',
       'search.label': '搜索书架',
-      'search.placeholder': '搜索书名、作者、笔记，或 #标签',
+      'search.placeholder': '搜索书名、作者、笔记或 #标签',
       'search.clear': '清除搜索',
-      'search.emptyTitle': '没有找到匹配的书',
-      'search.emptyHint': '换个关键词，或清空搜索看看全部书架。',
-      'search.emptyAction': '清空搜索',
+      'search.emptyTitle': '没有找到相关的书',
       'sort.label': '排序',
       'sort.added': '最近添加',
       'sort.title': '按书名',
       'sort.author': '按作者',
-      'book.unknownAuthor': '佚名',
+      'sort.finished': '最近读完',
+      'sort.rating': '按评分',
+      'view.label': '视图',
+      'view.board': '按状态',
+      'view.list': '列表',
+      'view.grid': '封面墙',
+      'view.all': '全部',
+      'shelf.emptyTitle': '书架还是空的',
+      'shelf.emptyHint': '可以一本本添加，也可以导入豆瓣或 Goodreads 的书单。还可以直接告诉 AI 助手你在读什么。',
       'book.edit': '编辑《{title}》',
       'book.statusFor': '《{title}》的阅读状态',
-      'book.added': '加入于 {date}',
+      'book.added': '{date} 添加',
+      'book.started': '{date} 开始',
+      'book.finished': '{date} 读完',
       'book.progress': '阅读进度',
-      'book.ratingValue': '评分 {value} / 5 星',
-      'book.empty': '这一格还空着',
-      'book.emptyHint': '把想读的书先放进来吧。',
-      'book.addFirst': '添加一本',
-      'dialog.addEyebrow': 'NEW BOOK',
-      'dialog.editEyebrow': 'EDIT BOOK',
+      'book.pageOf': '第 {page} / {pages} 页',
+      'book.pages': '{count} 页',
+      'book.pagesOne': '{count} 页',
+      'book.excerpts': '{count} 条摘录',
+      'book.excerptsOne': '{count} 条摘录',
+      'book.excerptPage': '第 {page} 页',
+      'book.ratingValue': '{value} 星（满分 5 星）',
+      'book.noInfo': '没有查到资料',
+      'book.filterTag': '只看 #{tag}',
       'dialog.addTitle': '添加一本书',
       'dialog.editTitle': '编辑书籍',
       'field.title': '书名',
@@ -195,150 +137,135 @@ window.__ModuleLoader__.load({
       'field.author': '作者',
       'field.authorPlaceholder': '例如：兰小欢',
       'field.status': '阅读状态',
-      'field.progress': '读到百分之几',
-      'field.rating': '读完打几星',
-      'field.note': '读书笔记',
-      'field.notePlaceholder': '一句想记住的话，或为什么想读它。',
-      'field.required': '请填写书名。',
-      'action.cancel': '取消',
-      'action.save': '保存修改',
-      'action.create': '加入书架',
-      'action.delete': '删除这本书',
-      'action.deleteConfirm': '确定删除',
-      'action.deleteHint': '再次点击即可永久删除。',
-      'action.clearRating': '清除评分',
-      'save.failed': '无法连接 Host 存储；当前修改会先暂存在本机浏览器，并在下次打开时自动重试。',
-      'storage.loading': '读取 Host…',
-      'storage.saving': '保存到 Host…',
-      'storage.host': 'Host 已同步',
-      'storage.offline': 'Host 离线 · 本机暂存',
-      'storage.hint': '书架保存在这台机器的 DSH 数据目录（~/.dsh/storages/bookshelf.json），换浏览器或清缓存不会丢失。',
-      'action.import': '导入',
-      'action.importTitle': '批量导入书籍',
-      'action.sync': '更新信息',
-      'action.syncTitle': '联网补全封面、作者和简介',
-      'action.syncAllTitle': '所有书籍都已联网查过，点击重新拉取全部',
-      'action.stop': '停止',
-      'action.dismiss': '知道了',
-      'action.lookup': '联网补全',
-      'action.lookupBusy': '查找中…',
-      'sync.running': '正在补全书籍信息 {done} / {total}',
-      'sync.current': '《{title}》',
-      'sync.done': '已补全 {updated} 本书的信息',
-      'sync.missed': '{count} 本没有找到匹配的资料',
-      'sync.failed': '{count} 本请求失败',
-      'sync.cancelled': '已停止，补全了 {updated} 本',
-      'sync.offline': '无法连接书目服务，请检查网络后重试。',
-      'lookup.found': '已从 {source} 找到资料，保存后生效。',
-      'lookup.missed': '没有找到匹配的资料，可以修改书名或作者后再试。',
-      'lookup.failed': '网络请求失败，请稍后重试。',
-      'lookup.needTitle': '先填写书名。',
-      'import.eyebrow': 'IMPORT',
-      'import.hint': '每行一本书，可写成「书名 - 作者」或《书名》作者；也可以粘贴 JSON，或拖入 .txt / .csv / .json 文件。支持豆瓣（豆伴导出的 CSV）和 Goodreads 导出的 CSV，会保留状态、评分、标签、短评和读完日期。',
-      'import.placeholder': '置身事内 - 兰小欢\n《万历十五年》黄仁宇\n百年孤独',
-      'import.file': '选择文件',
-      'import.fileFailed': '无法读取这个文件。',
-      'import.status': '放进',
-      'import.autoFill': '导入后自动联网补全封面、作者和简介',
-      'import.found': '识别到 {count} 本新书',
-      'import.duplicates': '{count} 本已在书架上，将跳过',
-      'import.none': '还没有识别到书名',
-      'import.submit': '导入 {count} 本',
-      'field.cover': '封面图片链接',
-      'field.coverPlaceholder': 'https://…',
-      'field.description': '简介',
-      'field.descriptionPlaceholder': '内容简介，可联网补全。',
-      'book.pages': '{count} 页',
-      'book.noInfo': '未找到资料',
-      'sort.finished': '最近读完',
-      'sort.rating': '按评分',
-      'view.label': '视图',
-      'view.board': '看板',
-      'view.list': '列表',
-      'view.grid': '封面墙',
-      'view.all': '全部',
-      'book.started': '{date} 开始',
-      'book.finished': '{date} 读完',
-      'book.pageOf': '第 {page} / {pages} 页',
-      'book.excerpts': '{count} 条摘录',
-      'book.filterTag': '只看 #{tag}',
       'field.currentPage': '读到第几页',
       'field.pages': '总页数',
-      'field.pagesHint': '填了总页数，进度会按页码自动计算。',
+      'field.progress': '进度',
+      'field.progressByPage': '按页码计算',
       'field.started': '开始日期',
       'field.finished': '读完日期',
+      'field.rating': '评分',
+      'field.note': '笔记',
+      'field.notePlaceholder': '一句想记住的话，或者为什么想读它',
       'field.tags': '标签',
-      'field.tagsPlaceholder': '用逗号或空格分隔，例如：经济 历史',
-      'field.excerpts': '摘录与划线',
-      'field.excerptPlaceholder': '一段想留下来的原文或心得',
+      'field.tagsPlaceholder': '例如：历史 经济',
+      'field.excerpts': '摘录',
+      'field.excerptPlaceholder': '想留下来的一段原文',
       'field.excerptPage': '页码',
       'field.excerptNote': '我的想法（可选）',
+      'field.description': '简介',
+      'field.descriptionPlaceholder': '可以用「补全信息」自动填写',
+      'field.cover': '封面图片地址',
+      'field.coverPlaceholder': 'https://…',
+      'field.more': '添加摘录、简介或封面',
+      'field.required': '请填写书名',
       'action.addExcerpt': '添加摘录',
       'action.removeExcerpt': '删除这条摘录',
-      'action.export': '导出',
-      'action.exportTitle': '导出书架备份',
-      'export.eyebrow': 'EXPORT',
-      'export.hint': '导出的文件保存在你的电脑上。JSON 是完整备份，可以再导入；CSV 可用 Excel / Numbers 打开，也能导回来；Markdown 适合分享书单。',
-      'export.json': 'JSON 完整备份',
-      'export.csv': 'CSV 表格',
-      'export.markdown': 'Markdown 书单',
-      'export.count': '共 {count} 本书，{excerpts} 条摘录',
+      'save.failed': '暂时连不上 DSH，改动先保存在这台电脑上，连上后会自动同步。',
+      'sync.running': '正在补全信息 {done}/{total}',
+      'sync.current': '《{title}》',
+      'sync.done': '已补全 {count} 本。',
+      'sync.doneOne': '已补全 {count} 本。',
+      'sync.missed': '{count} 本没有查到。',
+      'sync.failed': '{count} 本查找失败。',
+      'sync.cancelled': '已停止，补全了 {count} 本。',
+      'sync.offline': '连不上书目网站，请检查网络后再试。',
+      'lookup.found': '已从 {source} 找到，保存后生效',
+      'lookup.missed': '没有查到，可以改一下书名或作者再试',
+      'lookup.failed': '查找失败，请稍后再试',
+      'lookup.needTitle': '先填写书名',
+      'import.hint': '每行一本，例如「置身事内 - 兰小欢」。也可以选择或拖入豆瓣（豆伴导出）、Goodreads 的 CSV 文件。',
+      'import.placeholder': '置身事内 - 兰小欢\n《万历十五年》黄仁宇\n百年孤独',
+      'import.file': '选择文件…',
+      'import.fileFailed': '无法读取这个文件',
+      'import.status': '放到',
+      'import.autoFill': '自动补全封面和简介',
+      'import.found': '识别到 {count} 本',
+      'import.foundOne': '识别到 {count} 本',
+      'import.duplicates': '{count} 本已在书架上，会跳过',
+      'import.none': '还没有识别到书名',
+      'import.submit': '导入 {count} 本',
+      'export.json': '完整备份（JSON）',
+      'export.csv': '表格（CSV）',
+      'export.markdown': '书单（Markdown）',
+      'export.count': '共 {count} 本书',
+      'export.countOne': '共 {count} 本书',
       'stats.title': '阅读统计',
-      'stats.eyebrow': 'YEAR IN BOOKS',
-      'stats.thisYear': '今年读完',
-      'stats.open': '查看 {year} 年阅读统计',
       'stats.finished': '读完',
-      'stats.pages': '页',
+      'stats.pages': '读完的书总页数',
       'stats.avgRating': '平均评分',
-      'stats.avgDays': '平均天数 / 本',
+      'stats.avgDays': '平均每本用时',
       'stats.byMonth': '每月读完',
-      'stats.month': '{month} 月',
+      'stats.monthCount': '{month}：{count} 本',
       'stats.list': '读完的书',
       'stats.tags': '常读的标签',
-      'stats.empty': '这一年还没有标记读完的书。读完时把书拖到「已读」，就会记下日期。',
+      'stats.empty': '这一年还没有读完的书。把书的状态改成「已读」，就会记下读完的日期。',
       'stats.prev': '上一年',
       'stats.next': '下一年',
-      'storage.merged': '已合并其他窗口或 AI 助手的修改',
     }
 
     const en = {
       'entry.label': 'My Bookshelf',
-      'panel.eyebrow': 'PERSONAL LIBRARY',
       'panel.title': 'My Bookshelf',
-      'panel.subtitle': 'The books you want, the book in your hands, and the ones you finished.',
-      'panel.shelfCount': 'books',
+      'panel.finishedThisYear': '{count} books finished this year',
+      'panel.finishedThisYearOne': '{count} book finished this year',
       'panel.filteredCount': '{count} found',
-      'panel.summary': '{reading} reading · {read} finished',
-      'action.addTo': 'Add a book to {status}',
+      'action.add': 'Add book',
+      'action.addTo': 'Add to {status}',
       'action.close': 'Close',
+      'action.cancel': 'Cancel',
+      'action.save': 'Save',
+      'action.create': 'Add',
+      'action.delete': 'Delete',
+      'action.undo': 'Undo',
+      'action.clearRating': 'Clear rating',
+      'action.import': 'Import',
+      'action.importTitle': 'Import books',
+      'action.export': 'Export',
+      'action.exportTitle': 'Export shelf',
+      'action.stats': 'Reading stats',
+      'action.lookup': 'Look up details',
+      'action.lookupHint': 'Find covers, authors, and descriptions online',
+      'action.lookupBusy': 'Looking up…',
+      'action.stop': 'Stop',
+      'action.dismiss': 'OK',
+      'toast.deleted': 'Deleted “{title}”',
+      'toast.merged': 'Synced changes from another window or the assistant',
       'status.want': 'Want to read',
       'status.reading': 'Reading',
       'status.read': 'Finished',
-      'status.wantHint': 'Saved for the right afternoon.',
-      'status.readingHint': 'The book currently open.',
-      'status.readHint': 'Finished books, with a small mark left behind.',
       'status.label': 'Reading status',
-      'search.label': 'Search bookshelf',
-      'search.placeholder': 'Search title, author, note, or #tag',
+      'search.label': 'Search shelf',
+      'search.placeholder': 'Search titles, authors, notes, or #tags',
       'search.clear': 'Clear search',
-      'search.emptyTitle': 'No matching books',
-      'search.emptyHint': 'Try another word, or clear the search to see the whole shelf.',
-      'search.emptyAction': 'Clear search',
+      'search.emptyTitle': 'No books found',
       'sort.label': 'Sort',
       'sort.added': 'Recently added',
-      'sort.title': 'By title',
-      'sort.author': 'By author',
-      'book.unknownAuthor': 'Unknown author',
+      'sort.title': 'Title',
+      'sort.author': 'Author',
+      'sort.finished': 'Recently finished',
+      'sort.rating': 'Rating',
+      'view.label': 'View',
+      'view.board': 'By status',
+      'view.list': 'List',
+      'view.grid': 'Covers',
+      'view.all': 'All',
+      'shelf.emptyTitle': 'Your shelf is empty',
+      'shelf.emptyHint': 'Add books one at a time, or import a list from Goodreads or Douban. You can also just tell the assistant what you’re reading.',
       'book.edit': 'Edit “{title}”',
       'book.statusFor': 'Reading status for “{title}”',
       'book.added': 'Added {date}',
+      'book.started': 'Started {date}',
+      'book.finished': 'Finished {date}',
       'book.progress': 'Reading progress',
-      'book.ratingValue': 'Rated {value} out of 5',
-      'book.empty': 'This shelf is empty',
-      'book.emptyHint': 'Put the next book you want to read here.',
-      'book.addFirst': 'Add one',
-      'dialog.addEyebrow': 'NEW BOOK',
-      'dialog.editEyebrow': 'EDIT BOOK',
+      'book.pageOf': 'Page {page} of {pages}',
+      'book.pages': '{count} pages',
+      'book.pagesOne': '{count} page',
+      'book.excerpts': '{count} quotes',
+      'book.excerptsOne': '{count} quote',
+      'book.excerptPage': 'p. {page}',
+      'book.ratingValue': '{value} out of 5 stars',
+      'book.noInfo': 'No details found',
+      'book.filterTag': 'Show only #{tag}',
       'dialog.addTitle': 'Add a book',
       'dialog.editTitle': 'Edit book',
       'field.title': 'Title',
@@ -346,110 +273,70 @@ window.__ModuleLoader__.load({
       'field.author': 'Author',
       'field.authorPlaceholder': 'e.g. Antoine de Saint-Exupéry',
       'field.status': 'Reading status',
-      'field.progress': 'How far in',
-      'field.rating': 'Your rating',
-      'field.note': 'Note',
-      'field.notePlaceholder': 'A line worth keeping, or why you want to read it.',
-      'field.required': 'Please enter a title.',
-      'action.cancel': 'Cancel',
-      'action.save': 'Save changes',
-      'action.create': 'Add to shelf',
-      'action.delete': 'Delete this book',
-      'action.deleteConfirm': 'Confirm delete',
-      'action.deleteHint': 'Click again to delete permanently.',
-      'action.clearRating': 'Clear rating',
-      'save.failed': 'Could not reach Host storage; edits stay in this browser and are retried next time.',
-      'storage.loading': 'Reading Host…',
-      'storage.saving': 'Saving to Host…',
-      'storage.host': 'Host synced',
-      'storage.offline': 'Host offline · browser cache',
-      'storage.hint': 'The shelf lives in this machine’s DSH data directory (~/.dsh/storages/bookshelf.json), so another browser or a cache clear will not lose it.',
-      'action.import': 'Import',
-      'action.importTitle': 'Import books in bulk',
-      'action.sync': 'Update info',
-      'action.syncTitle': 'Fetch covers, authors, and descriptions',
-      'action.syncAllTitle': 'Every book has been looked up; click to refetch all',
-      'action.stop': 'Stop',
-      'action.dismiss': 'Dismiss',
-      'action.lookup': 'Fetch info',
-      'action.lookupBusy': 'Searching…',
-      'sync.running': 'Updating book info {done} / {total}',
-      'sync.current': '“{title}”',
-      'sync.done': 'Updated {updated} books',
-      'sync.missed': '{count} had no match',
-      'sync.failed': '{count} failed',
-      'sync.cancelled': 'Stopped after updating {updated}',
-      'sync.offline': 'Could not reach the book catalogs. Check your network and try again.',
-      'lookup.found': 'Found on {source}. Save to keep it.',
-      'lookup.missed': 'No match found. Adjust the title or author and try again.',
-      'lookup.failed': 'The request failed. Try again later.',
-      'lookup.needTitle': 'Enter a title first.',
-      'import.eyebrow': 'IMPORT',
-      'import.hint': 'One book per line, as “Title - Author”; or paste JSON, or drop a .txt / .csv / .json file. Goodreads and Douban CSV exports keep their shelf, rating, tags, review, and read date.',
-      'import.placeholder': 'The Little Prince - Antoine de Saint-Exupéry\nSapiens - Yuval Noah Harari\nOne Hundred Years of Solitude',
-      'import.file': 'Choose file',
-      'import.fileFailed': 'Could not read that file.',
-      'import.status': 'Shelve as',
-      'import.autoFill': 'Fetch covers, authors, and descriptions after import',
-      'import.found': '{count} new books detected',
-      'import.duplicates': '{count} already on the shelf will be skipped',
-      'import.none': 'No titles detected yet',
-      'import.submit': 'Import {count}',
-      'field.cover': 'Cover image URL',
-      'field.coverPlaceholder': 'https://…',
-      'field.description': 'Description',
-      'field.descriptionPlaceholder': 'A short synopsis; can be fetched online.',
-      'book.pages': '{count} pages',
-      'book.noInfo': 'No info found',
-      'sort.finished': 'Recently finished',
-      'sort.rating': 'By rating',
-      'view.label': 'View',
-      'view.board': 'Board',
-      'view.list': 'List',
-      'view.grid': 'Covers',
-      'view.all': 'All',
-      'book.started': 'Started {date}',
-      'book.finished': 'Finished {date}',
-      'book.pageOf': 'p. {page} / {pages}',
-      'book.excerpts': '{count} excerpts',
-      'book.filterTag': 'Show only #{tag}',
       'field.currentPage': 'Current page',
       'field.pages': 'Total pages',
-      'field.pagesHint': 'With a page count, progress follows the page you are on.',
+      'field.progress': 'Progress',
+      'field.progressByPage': 'From page numbers',
       'field.started': 'Started',
       'field.finished': 'Finished',
+      'field.rating': 'Rating',
+      'field.note': 'Note',
+      'field.notePlaceholder': 'A line to remember, or why you want to read it',
       'field.tags': 'Tags',
-      'field.tagsPlaceholder': 'Separate with commas or spaces, e.g. history economics',
-      'field.excerpts': 'Excerpts & highlights',
-      'field.excerptPlaceholder': 'A passage worth keeping, or a takeaway',
+      'field.tagsPlaceholder': 'e.g. history, economics',
+      'field.excerpts': 'Quotes',
+      'field.excerptPlaceholder': 'A passage worth keeping',
       'field.excerptPage': 'Page',
-      'field.excerptNote': 'My thought (optional)',
-      'action.addExcerpt': 'Add excerpt',
-      'action.removeExcerpt': 'Remove this excerpt',
-      'action.export': 'Export',
-      'action.exportTitle': 'Export a backup of the shelf',
-      'export.eyebrow': 'EXPORT',
-      'export.hint': 'Files are saved on your computer. JSON is a complete backup you can import again; CSV opens in Excel or Numbers and imports back; Markdown is for sharing a reading list.',
-      'export.json': 'JSON backup',
-      'export.csv': 'CSV spreadsheet',
-      'export.markdown': 'Markdown list',
-      'export.count': '{count} books, {excerpts} excerpts',
+      'field.excerptNote': 'Your thought (optional)',
+      'field.description': 'Description',
+      'field.descriptionPlaceholder': 'Use Look up details to fill this in',
+      'field.cover': 'Cover image URL',
+      'field.coverPlaceholder': 'https://…',
+      'field.more': 'Add quotes, description, or cover',
+      'field.required': 'Enter a title',
+      'action.addExcerpt': 'Add quote',
+      'action.removeExcerpt': 'Delete quote',
+      'save.failed': 'Can’t reach DSH right now. Your changes are kept on this computer and will sync when it’s back.',
+      'sync.running': 'Looking up details {done} of {total}',
+      'sync.current': '“{title}”',
+      'sync.done': 'Updated {count} books.',
+      'sync.doneOne': 'Updated {count} book.',
+      'sync.missed': '{count} not found.',
+      'sync.failed': '{count} failed.',
+      'sync.cancelled': 'Stopped after {count}.',
+      'sync.offline': 'Can’t reach the book catalogs. Check your connection and try again.',
+      'lookup.found': 'Found on {source}. Save to keep it.',
+      'lookup.missed': 'Nothing found. Try a different title or author.',
+      'lookup.failed': 'Couldn’t look it up. Try again later.',
+      'lookup.needTitle': 'Enter a title first',
+      'import.hint': 'One book per line, like “Dune - Frank Herbert”. You can also choose or drop a CSV exported from Goodreads or Douban.',
+      'import.placeholder': 'The Little Prince - Antoine de Saint-Exupéry\nSapiens - Yuval Noah Harari\nOne Hundred Years of Solitude',
+      'import.file': 'Choose file…',
+      'import.fileFailed': 'Couldn’t read this file',
+      'import.status': 'Add to',
+      'import.autoFill': 'Look up covers and descriptions',
+      'import.found': '{count} books found',
+      'import.foundOne': '{count} book found',
+      'import.duplicates': '{count} already on your shelf will be skipped',
+      'import.none': 'No titles yet',
+      'import.submit': 'Import {count}',
+      'export.json': 'Full backup (JSON)',
+      'export.csv': 'Spreadsheet (CSV)',
+      'export.markdown': 'Reading list (Markdown)',
+      'export.count': '{count} books',
+      'export.countOne': '{count} book',
       'stats.title': 'Reading stats',
-      'stats.eyebrow': 'YEAR IN BOOKS',
-      'stats.thisYear': 'this year',
-      'stats.open': 'Open {year} reading stats',
-      'stats.finished': 'finished',
-      'stats.pages': 'pages',
-      'stats.avgRating': 'avg rating',
-      'stats.avgDays': 'avg days / book',
-      'stats.byMonth': 'Finished per month',
-      'stats.month': 'Month {month}',
-      'stats.list': 'Books finished',
+      'stats.finished': 'Books finished',
+      'stats.pages': 'Pages in finished books',
+      'stats.avgRating': 'Average rating',
+      'stats.avgDays': 'Average time per book',
+      'stats.byMonth': 'Finished by month',
+      'stats.monthCount': '{month}: {count}',
+      'stats.list': 'Books you finished',
       'stats.tags': 'Top tags',
-      'stats.empty': 'No books marked finished in this year yet. Moving a book to Finished records the date.',
+      'stats.empty': 'No finished books this year. When you mark a book as Finished, the date is recorded.',
       'stats.prev': 'Previous year',
       'stats.next': 'Next year',
-      'storage.merged': 'Merged changes from another window or the assistant',
     }
 
     /* ── icons ─────────────────────────────────────────────────────────── */
@@ -498,16 +385,6 @@ window.__ModuleLoader__.load({
         [
           h('path', { key: 'a', d: 'M4 4l8 8' }),
           h('path', { key: 'b', d: 'M12 4l-8 8' }),
-        ],
-        size,
-      )
-    }
-
-    function PencilIcon({ size }) {
-      return glyph(
-        [
-          h('path', { key: 'a', d: 'M10.8 2.9a1.4 1.4 0 0 1 2 2L5.3 12.4l-2.7.7.7-2.7z' }),
-          h('path', { key: 'b', d: 'M9.6 4.1l2 2' }),
         ],
         size,
       )
@@ -604,6 +481,18 @@ window.__ModuleLoader__.load({
         ],
         size,
         { className: 'bs-spin' },
+      )
+    }
+
+    function ChartIcon({ size }) {
+      return glyph(
+        [
+          h('path', { key: 'a', d: 'M2.5 13.5h11' }),
+          h('path', { key: 'b', d: 'M4.5 11V7.5' }),
+          h('path', { key: 'c', d: 'M8 11V4' }),
+          h('path', { key: 'd', d: 'M11.5 11V6' }),
+        ],
+        size,
       )
     }
 
@@ -797,20 +686,18 @@ window.__ModuleLoader__.load({
       return book.metaStatus === '' && (book.cover === '' || book.description === '' || book.author === '')
     }
 
+    /** A first-time user starts with an empty shelf, never sample books they would have to delete. */
     function loadLocalBooks() {
-      const seeds = SEED_BOOKS.map(normalizeBook)
       try {
-        if (typeof localStorage === 'undefined') return seeds
+        if (typeof localStorage === 'undefined') return []
         const raw = localStorage.getItem(STORAGE_KEY)
-        if (raw === null) return seeds
+        if (raw === null) return []
         const parsed = JSON.parse(raw)
-        if (parsed === null || typeof parsed !== 'object' || parsed.version !== STORAGE_VERSION) {
-          return seeds
-        }
-        if (!Array.isArray(parsed.books)) return seeds
+        if (parsed === null || typeof parsed !== 'object' || parsed.version !== STORAGE_VERSION) return []
+        if (!Array.isArray(parsed.books)) return []
         return parsed.books.map(normalizeBook).filter(Boolean)
       } catch {
-        return seeds
+        return []
       }
     }
 
@@ -1622,7 +1509,7 @@ window.__ModuleLoader__.load({
           out.push(`- ${bits.join(' · ')}`)
           if (book.note) out.push(`  - ${book.note.replace(/\n+/g, ' ')}`)
           for (const excerpt of book.excerpts) {
-            out.push(`  > ${excerpt.text.replace(/\n+/g, ' ')}${excerpt.page > 0 ? ` (p.${excerpt.page})` : ''}`)
+            out.push(`  > ${excerpt.text.replace(/\n+/g, ' ')}${excerpt.page > 0 ? ` (${tt('book.excerptPage', { page: excerpt.page })})` : ''}`)
           }
         }
         out.push('')
@@ -1677,7 +1564,28 @@ window.__ModuleLoader__.load({
     function coverLetter(title) {
       const cleaned = title.replace(/^[《「『"]+|[》」』"]+$/g, '').trim()
       const first = Array.from(cleaned)[0]
-      return first === undefined ? '·' : first.toUpperCase()
+      return first === undefined ? '' : first.toUpperCase()
+    }
+
+    /** Grouped digits in the reader's locale: 1,443 not 1443. */
+    function formatNumber(value, activeLocale, options) {
+      try {
+        return new Intl.NumberFormat(activeLocale || undefined, options).format(value)
+      } catch {
+        return String(value)
+      }
+    }
+
+    /** English needs "1 quote" / "2 quotes"; each `one` key exists in both dictionaries. */
+    function plural(tt, count, many, one, activeLocale) {
+      const rule = (() => {
+        try {
+          return new Intl.PluralRules(activeLocale || undefined).select(count)
+        } catch {
+          return count === 1 ? 'one' : 'other'
+        }
+      })()
+      return tt(rule === 'one' ? one : many, { count: formatNumber(count, activeLocale) })
     }
 
     function formatDay(ms, activeLocale) {
@@ -1746,10 +1654,10 @@ window.__ModuleLoader__.load({
         'div',
         {
           className: `bs-cover${className ? ` ${className}` : ''}${showImage ? ' has-image' : ''}`,
-          style: coverStyle(title || '·'),
+          style: coverStyle(title || ' '),
           'aria-hidden': true,
         },
-        h('span', { className: 'bs-cover-letter' }, coverLetter(title || '·')),
+        h('span', { className: 'bs-cover-letter' }, coverLetter(title || '')),
         showImage &&
           h('img', {
             className: 'bs-cover-img',
@@ -1764,59 +1672,48 @@ window.__ModuleLoader__.load({
       )
     }
 
-    function metaLine(book, tt) {
+    /** Year, publisher, page count: separated by space, not by "·". */
+    function metaParts(book, tt, activeLocale) {
       const parts = []
       if (book.published !== '') parts.push(book.published)
       if (book.publisher !== '') parts.push(book.publisher)
-      if (book.pages > 0) parts.push(tt('book.pages', { count: book.pages }))
-      return parts.join(' · ')
+      if (book.pages > 0) parts.push(plural(tt, book.pages, 'book.pages', 'book.pagesOne', activeLocale))
+      return parts
     }
 
     function BookCard({ book, tt, activeLocale, onEdit, onStatus, onTag, syncing }) {
       const progress = clampNumber(book.progress, 0, 100, 0)
-      const statusLabel = tt(STATUS_META[book.status].label)
-      const details = metaLine(book, tt)
+      const details = metaParts(book, tt, activeLocale)
       return h(
         'article',
         {
           className: syncing ? 'bs-card is-syncing' : 'bs-card',
           'data-status': book.status,
         },
+        // The whole top of the card opens the book; no separate pencil to hunt for.
         h(
-          'div',
-          { className: 'bs-card-top' },
+          'button',
+          {
+            type: 'button',
+            className: 'bs-card-open',
+            onClick: () => onEdit(book),
+          },
           h(
-            'button',
-            {
-              type: 'button',
-              className: 'bs-cover-button',
-              onClick: () => onEdit(book),
-              tabIndex: -1,
-              'aria-hidden': true,
-            },
+            'span',
+            { className: 'bs-cover-wrap' },
             h(BookCover, { title: book.title, cover: book.cover }),
             syncing && h('span', { className: 'bs-cover-busy' }, h(SpinnerIcon, { size: 16 })),
           ),
           h(
-            'div',
+            'span',
             { className: 'bs-book-info' },
-            h('h3', { className: 'bs-book-title', title: book.title }, book.title),
-            h('p', { className: 'bs-book-author', title: book.author || undefined },
-              book.author || tt('book.unknownAuthor')),
-            details !== '' && h('p', { className: 'bs-book-meta', title: details }, details),
-            details === '' && book.metaStatus === 'miss' &&
-              h('p', { className: 'bs-book-meta is-missing' }, tt('book.noInfo')),
-          ),
-          h(
-            'button',
-            {
-              type: 'button',
-              className: 'bs-edit',
-              onClick: () => onEdit(book),
-              'aria-label': tt('book.edit', { title: book.title }),
-              title: tt('book.edit', { title: book.title }),
-            },
-            h(PencilIcon, { size: 14 }),
+            h('span', { className: 'bs-book-title', title: book.title }, book.title),
+            book.author !== '' && h('span', { className: 'bs-book-author', title: book.author }, book.author),
+            details.length > 0 &&
+              h('span', { className: 'bs-book-meta' },
+                details.map((part, index) => h('span', { key: index, className: 'bs-meta-part' }, part))),
+            details.length === 0 && book.metaStatus === 'miss' &&
+              h('span', { className: 'bs-book-meta' }, tt('book.noInfo')),
           ),
         ),
         book.status === 'reading' &&
@@ -1827,9 +1724,9 @@ window.__ModuleLoader__.load({
               'div',
               { className: 'bs-progress-meta' },
               h('span', null, book.pages > 0 && book.currentPage > 0
-                ? tt('book.pageOf', { page: book.currentPage, pages: book.pages })
+                ? tt('book.pageOf', { page: formatNumber(book.currentPage, activeLocale), pages: formatNumber(book.pages, activeLocale) })
                 : tt('book.progress')),
-              h('span', null, `${progress}%`),
+              h('span', null, formatNumber(progress / 100, activeLocale, { style: 'percent' })),
             ),
             h(
               'div',
@@ -1844,29 +1741,9 @@ window.__ModuleLoader__.load({
               h('span', { className: 'bs-fill', style: { width: `${progress}%` } }),
             ),
           ),
-        book.status === 'read' &&
-          book.rating > 0 &&
-          h(
-            'div',
-            {
-              className: 'bs-rating',
-              role: 'img',
-              'aria-label': tt('book.ratingValue', { value: book.rating }),
-            },
-            [1, 2, 3, 4, 5].map(star =>
-              h(
-                'span',
-                {
-                  key: star,
-                  className: star <= book.rating ? 'bs-star is-on' : 'bs-star is-off',
-                  'aria-hidden': true,
-                },
-                star <= book.rating ? '★' : '☆',
-              ),
-            ),
-          ),
+        book.status === 'read' && book.rating > 0 && h(RatingStars, { rating: book.rating, tt }),
         book.note !== ''
-          ? h('p', { className: 'bs-note', title: book.note }, `“${book.note}”`)
+          ? h('p', { className: 'bs-note', title: book.note }, book.note)
           : book.description !== '' &&
             h('p', { className: 'bs-desc', title: book.description }, book.description),
         (book.tags.length > 0 || book.excerpts.length > 0) &&
@@ -1890,52 +1767,66 @@ window.__ModuleLoader__.load({
               h(
                 'button',
                 { type: 'button', className: 'bs-tag is-excerpts', onClick: () => onEdit(book) },
-                tt('book.excerpts', { count: book.excerpts.length }),
+                plural(tt, book.excerpts.length, 'book.excerpts', 'book.excerptsOne', activeLocale),
               ),
           ),
         h(
           'div',
           { className: 'bs-card-foot' },
-          h(
-            'span',
-            { className: 'bs-select-wrap' },
-            h(
-              'select',
-              {
-                className: 'bs-status-select',
-                value: book.status,
-                onChange: event => onStatus(book.id, event.target.value),
-                'aria-label': tt('book.statusFor', { title: book.title }),
-                title: statusLabel,
-              },
-              STATUSES.map(status =>
-                h('option', { key: status, value: status }, tt(STATUS_META[status].label)),
-              ),
-            ),
-          ),
+          h(StatusSelect, { book, tt, onStatus }),
           h('span', { className: 'bs-date' }, formatAdded(book, activeLocale, tt)),
         ),
       )
     }
 
-    function EmptyShelf({ tt, onAdd }) {
+    function StatusSelect({ book, tt, onStatus }) {
+      return h(
+        'span',
+        { className: 'bs-select-wrap' },
+        h(
+          'select',
+          {
+            className: 'bs-status-select',
+            value: book.status,
+            onChange: event => onStatus(book.id, event.target.value),
+            'aria-label': tt('book.statusFor', { title: book.title }),
+          },
+          STATUSES.map(status => h('option', { key: status, value: status }, tt(STATUS_META[status].label))),
+        ),
+      )
+    }
+
+    /** An empty column is just the way to fill it. */
+    function EmptyColumn({ status, tt, onAdd }) {
+      return h(
+        'button',
+        { type: 'button', className: 'bs-empty-add', onClick: onAdd },
+        h(PlusIcon, { size: 14 }),
+        h('span', null, tt('action.addTo', { status: tt(STATUS_META[status].label) })),
+      )
+    }
+
+    /** First run, or after the last book is deleted: the two ways in, plus the assistant. */
+    function EmptyShelf({ tt, onAdd, onImport }) {
       return h(
         'div',
-        { className: 'bs-empty' },
-        h('span', { className: 'bs-empty-icon', 'aria-hidden': true }, h(ShelfMark, { size: 28 })),
-        h('p', { className: 'bs-empty-title' }, tt('book.empty')),
-        h('p', { className: 'bs-empty-hint' }, tt('book.emptyHint')),
+        { className: 'bs-welcome' },
+        h('span', { className: 'bs-welcome-icon', 'aria-hidden': true }, h(ShelfMark, { size: 32 })),
+        h('h2', { className: 'bs-welcome-title' }, tt('shelf.emptyTitle')),
+        h('p', { className: 'bs-welcome-hint' }, tt('shelf.emptyHint')),
         h(
-          'button',
-          { type: 'button', className: 'bs-empty-action', onClick: onAdd },
-          tt('book.addFirst'),
+          'div',
+          { className: 'bs-welcome-actions' },
+          h('button', { type: 'button', className: 'bs-btn bs-btn-primary', onClick: onAdd },
+            h(PlusIcon, { size: 14 }), h('span', null, tt('action.add'))),
+          h('button', { type: 'button', className: 'bs-btn bs-btn-secondary', onClick: onImport },
+            h(ImportIcon, { size: 14 }), h('span', null, tt('action.importTitle'))),
         ),
       )
     }
 
     function ShelfColumn({ status, books, tt, activeLocale, onAdd, onEdit, onStatus, onTag, syncingIds }) {
-      const meta = STATUS_META[status]
-      const label = tt(meta.label)
+      const label = tt(STATUS_META[status].label)
       return h(
         'section',
         {
@@ -1946,13 +1837,10 @@ window.__ModuleLoader__.load({
         h(
           'div',
           { className: 'bs-col-head' },
-          h(
-            'div',
-            { className: 'bs-col-title-row' },
-            h('span', { className: 'bs-col-icon', 'aria-hidden': true },
-              h(StatusIcon, { status, size: 14 })),
-            h('h2', { className: 'bs-col-title', id: `bs-column-${status}` }, label),
-            h('span', { className: 'bs-col-count' }, String(books.length)),
+          h('span', { className: 'bs-col-icon', 'aria-hidden': true }, h(StatusIcon, { status, size: 14 })),
+          h('h2', { className: 'bs-col-title', id: `bs-column-${status}` }, label),
+          h('span', { className: 'bs-col-count' }, formatNumber(books.length, activeLocale)),
+          books.length > 0 &&
             h(
               'button',
               {
@@ -1962,16 +1850,14 @@ window.__ModuleLoader__.load({
                 'aria-label': tt('action.addTo', { status: label }),
                 title: tt('action.addTo', { status: label }),
               },
-              h(PlusIcon, { size: 13 }),
+              h(PlusIcon, { size: 14 }),
             ),
-          ),
-          h('p', { className: 'bs-col-hint' }, tt(meta.hint)),
         ),
         h(
           'div',
           { className: 'bs-col-body' },
           books.length === 0
-            ? h(EmptyShelf, { tt, onAdd: () => onAdd(status) })
+            ? h(EmptyColumn, { status, tt, onAdd: () => onAdd(status) })
             : books.map(book =>
                 h(BookCard, {
                   key: book.id,
@@ -2065,13 +1951,17 @@ window.__ModuleLoader__.load({
       }, [onClose])
     }
 
-    function DialogShell({ layerRef, eyebrow, title, tt, onClose, wide, children }) {
+    /**
+     * `keepOnScrim`: forms the user is typing into do not close on a stray
+     * click outside; Escape, Cancel, and the close button still do.
+     */
+    function DialogShell({ layerRef, title, tt, onClose, wide, keepOnScrim, children }) {
       return h(
         'div',
         {
           className: 'bs-scrim',
           onMouseDown: event => {
-            if (event.target === event.currentTarget) onClose()
+            if (!keepOnScrim && event.target === event.currentTarget) onClose()
           },
         },
         h(
@@ -2086,12 +1976,7 @@ window.__ModuleLoader__.load({
           h(
             'div',
             { className: 'bs-dialog-head' },
-            h(
-              'div',
-              { className: 'bs-dialog-heading' },
-              h('p', { className: 'bs-dialog-eyebrow' }, eyebrow),
-              h('h2', { className: 'bs-dialog-title', id: 'bs-dialog-title' }, title),
-            ),
+            h('h2', { className: 'bs-dialog-title', id: 'bs-dialog-title' }, title),
             h(
               'button',
               {
@@ -2109,7 +1994,7 @@ window.__ModuleLoader__.load({
       )
     }
 
-    function BookDialog({ mode, initialStatus, book, tt, onClose, onSubmit, onDelete }) {
+    function BookDialog({ mode, initialStatus, book, tt, activeLocale, onClose, onSubmit, onDelete }) {
       const editing = mode === 'edit'
       const [title, setTitle] = React.useState(editing ? book.title : '')
       const [author, setAuthor] = React.useState(editing ? book.author : '')
@@ -2121,8 +2006,10 @@ window.__ModuleLoader__.load({
       const [description, setDescription] = React.useState(editing ? book.description : '')
       const [pages, setPages] = React.useState(editing && book.pages > 0 ? String(book.pages) : '')
       const [currentPage, setCurrentPage] = React.useState(editing && book.currentPage > 0 ? String(book.currentPage) : '')
-      const [started, setStarted] = React.useState(() => toDateInput(editing ? book.startedAt
-        : initialStatus === 'reading' ? Date.now() : 0))
+      // A new book's start day is unknown (it may have begun weeks ago), so it is left blank
+      // rather than guessed; the finish day defaults to today because stats need one.
+      const [started, setStarted] = React.useState(() => toDateInput(editing ? book.startedAt : 0))
+      const [showMore, setShowMore] = React.useState(editing)
       const [finished, setFinished] = React.useState(() => toDateInput(editing ? book.finishedAt
         : initialStatus === 'read' ? Date.now() : 0))
       const [tagsText, setTagsText] = React.useState(editing ? book.tags.join(', ') : '')
@@ -2143,7 +2030,7 @@ window.__ModuleLoader__.load({
         setStatus(value)
         const today = toDateInput(Date.now())
         if (value === 'reading') {
-          if (started === '') setStarted(today)
+          if (started === '' && editing) setStarted(today)
           setFinished('')
         } else if (value === 'read') {
           if (finished === '') setFinished(today)
@@ -2173,7 +2060,6 @@ window.__ModuleLoader__.load({
       }
       const [lookup, setLookup] = React.useState({ state: 'idle', message: '' })
       const [error, setError] = React.useState('')
-      const [confirmDelete, setConfirmDelete] = React.useState(false)
       const layerRef = React.useRef(null)
       const titleRef = React.useRef(null)
       const lookupAbort = React.useRef(null)
@@ -2256,7 +2142,7 @@ window.__ModuleLoader__.load({
           layerRef,
           tt,
           onClose,
-          eyebrow: tt(editing ? 'dialog.editEyebrow' : 'dialog.addEyebrow'),
+          keepOnScrim: true,
           title: tt(editing ? 'dialog.editTitle' : 'dialog.addTitle'),
         },
         h(
@@ -2315,9 +2201,10 @@ window.__ModuleLoader__.load({
                     'button',
                     {
                       type: 'button',
-                      className: 'bs-btn bs-btn-soft',
+                      className: 'bs-btn bs-btn-secondary',
                       onClick: fetchInfo,
                       disabled: busy,
+                      title: tt('action.lookupHint'),
                     },
                     busy ? h(SpinnerIcon, { size: 14 }) : h(SparkIcon, { size: 14 }),
                     h('span', null, tt(busy ? 'action.lookupBusy' : 'action.lookup')),
@@ -2385,7 +2272,15 @@ window.__ModuleLoader__.load({
                   }),
                 ),
               ),
-            status === 'reading' &&
+            status === 'reading' && pagedProgress &&
+              h(
+                'p',
+                { className: 'bs-field-label' },
+                tt('field.progress'),
+                h('span', { className: 'bs-field-value' },
+                  `${tt('field.progressByPage')} ${formatNumber(deriveProgress('reading', progress, pageNow, pageCount) / 100, activeLocale, { style: 'percent' })}`),
+              ),
+            status === 'reading' && !pagedProgress &&
               h(
                 'div',
                 { className: 'bs-field' },
@@ -2393,8 +2288,7 @@ window.__ModuleLoader__.load({
                   'label',
                   { className: 'bs-field-label', htmlFor: 'bs-field-progress' },
                   tt('field.progress'),
-                  h('span', { className: 'bs-field-value' },
-                    `${pagedProgress ? deriveProgress('reading', progress, pageNow, pageCount) : progress}%`),
+                  h('span', { className: 'bs-field-value' }, formatNumber(progress / 100, activeLocale, { style: 'percent' })),
                 ),
                 h('input', {
                   id: 'bs-field-progress',
@@ -2403,11 +2297,9 @@ window.__ModuleLoader__.load({
                   min: 0,
                   max: 100,
                   step: 1,
-                  value: pagedProgress ? deriveProgress('reading', progress, pageNow, pageCount) : progress,
-                  disabled: pagedProgress,
+                  value: progress,
                   onChange: event => setProgress(Number(event.target.value)),
                 }),
-                h('p', { className: 'bs-field-hint' }, tt('field.pagesHint')),
               ),
             status !== 'want' &&
               h(
@@ -2451,21 +2343,6 @@ window.__ModuleLoader__.load({
             h(
               'div',
               { className: 'bs-field' },
-              h('label', { className: 'bs-field-label', htmlFor: 'bs-field-description' },
-                tt('field.description')),
-              h('textarea', {
-                id: 'bs-field-description',
-                className: 'bs-textarea',
-                value: description,
-                onChange: event => setDescription(event.target.value),
-                placeholder: tt('field.descriptionPlaceholder'),
-                rows: 4,
-                maxLength: 2000,
-              }),
-            ),
-            h(
-              'div',
-              { className: 'bs-field' },
               h('label', { className: 'bs-field-label', htmlFor: 'bs-field-note' },
                 tt('field.note')),
               h('textarea', {
@@ -2492,6 +2369,10 @@ window.__ModuleLoader__.load({
                 autoComplete: 'off',
               }),
             ),
+            // Adding a book stays short; quotes, description, and cover wait behind one click.
+            showMore ? h(
+              React.Fragment,
+              null,
             h(
               'div',
               { className: 'bs-field' },
@@ -2517,7 +2398,8 @@ window.__ModuleLoader__.load({
                           h(
                             'p',
                             { className: 'bs-excerpt-meta' },
-                            [excerpt.page > 0 ? `p.${excerpt.page}` : '', excerpt.note].filter(Boolean).join(' · '),
+                            excerpt.page > 0 && h('span', { className: 'bs-meta-part' }, tt('book.excerptPage', { page: excerpt.page })),
+                            excerpt.note !== '' && h('span', { className: 'bs-meta-part' }, excerpt.note),
                           ),
                       ),
                       h(
@@ -2568,14 +2450,29 @@ window.__ModuleLoader__.load({
                   'button',
                   {
                     type: 'button',
-                    className: 'bs-btn bs-btn-soft',
+                    className: 'bs-btn bs-btn-secondary',
                     onClick: addExcerpt,
                     disabled: draft.text.trim() === '' || excerpts.length >= MAX_EXCERPTS,
                   },
-                  h(PlusIcon, { size: 13 }),
+                  h(PlusIcon, { size: 14 }),
                   h('span', null, tt('action.addExcerpt')),
                 ),
               ),
+            ),
+            h(
+              'div',
+              { className: 'bs-field' },
+              h('label', { className: 'bs-field-label', htmlFor: 'bs-field-description' },
+                tt('field.description')),
+              h('textarea', {
+                id: 'bs-field-description',
+                className: 'bs-textarea',
+                value: description,
+                onChange: event => setDescription(event.target.value),
+                placeholder: tt('field.descriptionPlaceholder'),
+                rows: 4,
+                maxLength: 2000,
+              }),
             ),
             h(
               'div',
@@ -2593,27 +2490,20 @@ window.__ModuleLoader__.load({
                 spellCheck: false,
               }),
             ),
+            ) : h(
+              'button',
+              { type: 'button', className: 'bs-btn bs-btn-quiet bs-more-fields', onClick: () => setShowMore(true) },
+              h(PlusIcon, { size: 14 }),
+              h('span', null, tt('field.more')),
+            ),
           ),
           h(
             'div',
             { className: 'bs-dialog-foot' },
+            // Deleting is immediate; the page offers Undo, so there is no "are you sure".
             editing &&
-              h(
-                'button',
-                {
-                  type: 'button',
-                  className: confirmDelete ? 'bs-btn bs-btn-danger-confirm' : 'bs-btn bs-btn-danger',
-                  onClick: () => {
-                    if (confirmDelete) {
-                      onDelete()
-                    } else {
-                      setConfirmDelete(true)
-                    }
-                  },
-                  title: confirmDelete ? tt('action.deleteHint') : undefined,
-                },
-                confirmDelete ? tt('action.deleteConfirm') : tt('action.delete'),
-              ),
+              h('button', { type: 'button', className: 'bs-btn bs-btn-secondary', onClick: onDelete },
+                h(TrashIcon, { size: 14 }), h('span', null, tt('action.delete'))),
             h('span', { className: 'bs-foot-spacer' }),
             h(
               'button',
@@ -2630,7 +2520,7 @@ window.__ModuleLoader__.load({
       )
     }
 
-    function ImportDialog({ books, tt, onClose, onImport }) {
+    function ImportDialog({ books, tt, activeLocale, onClose, onImport }) {
       const [text, setText] = React.useState('')
       const [fileName, setFileName] = React.useState('')
       const [fileError, setFileError] = React.useState('')
@@ -2685,7 +2575,7 @@ window.__ModuleLoader__.load({
           tt,
           onClose,
           wide: true,
-          eyebrow: tt('import.eyebrow'),
+          keepOnScrim: true,
           title: tt('action.importTitle'),
         },
         h(
@@ -2778,7 +2668,6 @@ window.__ModuleLoader__.load({
                 checked: autoFill,
                 onChange: event => setAutoFill(event.target.checked),
               }),
-              h(SparkIcon, { size: 14 }),
               h('span', null, tt('import.autoFill')),
             ),
             h(
@@ -2788,11 +2677,11 @@ window.__ModuleLoader__.load({
                 'p',
                 { className: 'bs-import-count' },
                 parsed.fresh.length > 0
-                  ? tt('import.found', { count: parsed.fresh.length })
+                  ? plural(tt, parsed.fresh.length, 'import.found', 'import.foundOne', activeLocale)
                   : tt('import.none'),
                 parsed.duplicates > 0 &&
                   h('span', { className: 'bs-import-dup' },
-                    tt('import.duplicates', { count: parsed.duplicates })),
+                    tt('import.duplicates', { count: formatNumber(parsed.duplicates, activeLocale) })),
               ),
               preview.length > 0 &&
                 h(
@@ -2807,7 +2696,7 @@ window.__ModuleLoader__.load({
                     ),
                   ),
                   parsed.fresh.length > preview.length &&
-                    h('li', { className: 'bs-chip is-more' }, `+${parsed.fresh.length - preview.length}`),
+                    h('li', { className: 'bs-chip is-more' }, `+${formatNumber(parsed.fresh.length - preview.length, activeLocale)}`),
                 ),
             ),
           ),
@@ -2827,19 +2716,18 @@ window.__ModuleLoader__.load({
                 className: 'bs-btn bs-btn-primary',
                 disabled: parsed.fresh.length === 0,
               },
-              tt('import.submit', { count: parsed.fresh.length }),
+              tt('import.submit', { count: formatNumber(parsed.fresh.length, activeLocale) }),
             ),
           ),
         ),
       )
     }
 
-    function ExportDialog({ books, tt, onClose }) {
+    function ExportDialog({ books, tt, activeLocale, onClose }) {
       const layerRef = React.useRef(null)
       const firstRef = React.useRef(null)
       useModal(layerRef, firstRef, onClose)
       const day = toDateInput(Date.now())
-      const excerptCount = books.reduce((sum, book) => sum + book.excerpts.length, 0)
       const formats = [
         { id: 'json', label: 'export.json', run: () => downloadText(`bookshelf-${day}.json`, 'application/json', exportJson(books)) },
         { id: 'csv', label: 'export.csv', run: () => downloadText(`bookshelf-${day}.csv`, 'text/csv;charset=utf-8', exportCsv(books)) },
@@ -2847,12 +2735,11 @@ window.__ModuleLoader__.load({
       ]
       return h(
         DialogShell,
-        { layerRef, tt, onClose, eyebrow: tt('export.eyebrow'), title: tt('action.exportTitle') },
+        { layerRef, tt, onClose, title: tt('action.exportTitle') },
         h(
           'div',
           { className: 'bs-dialog-body' },
-          h('p', { className: 'bs-import-hint' }, tt('export.hint')),
-          h('p', { className: 'bs-import-count' }, tt('export.count', { count: books.length, excerpts: excerptCount })),
+          h('p', { className: 'bs-dialog-text' }, plural(tt, books.length, 'export.count', 'export.countOne', activeLocale)),
           h(
             'div',
             { className: 'bs-export-grid' },
@@ -2914,15 +2801,34 @@ window.__ModuleLoader__.load({
       useModal(layerRef, closeRef, onClose)
       const stats = React.useMemo(() => yearStats(books, year), [books, year])
       const peak = Math.max(1, ...stats.byMonth)
+      const months = React.useMemo(() => {
+        const format = (options, month) => {
+          try {
+            return new Intl.DateTimeFormat(activeLocale || undefined, options).format(new Date(2000, month, 15))
+          } catch {
+            return String(month + 1)
+          }
+        }
+        return Array.from({ length: 12 }, (_, month) => ({ short: format({ month: 'short' }, month), long: format({ month: 'long' }, month) }))
+      }, [activeLocale])
+      const none = '–'
       const tiles = [
-        { value: stats.finished.length, label: tt('stats.finished') },
-        { value: stats.pages, label: tt('stats.pages') },
-        { value: stats.averageRating || '–', label: tt('stats.avgRating') },
-        { value: stats.averageDays || '–', label: tt('stats.avgDays') },
+        { id: 'finished', value: formatNumber(stats.finished.length, activeLocale), label: tt('stats.finished') },
+        { id: 'pages', value: formatNumber(stats.pages, activeLocale), label: tt('stats.pages') },
+        {
+          id: 'rating',
+          value: stats.averageRating ? formatNumber(stats.averageRating, activeLocale, { minimumFractionDigits: 1, maximumFractionDigits: 1 }) : none,
+          label: tt('stats.avgRating'),
+        },
+        {
+          id: 'days',
+          value: stats.averageDays ? formatNumber(stats.averageDays, activeLocale, { style: 'unit', unit: 'day', unitDisplay: 'long' }) : none,
+          label: tt('stats.avgDays'),
+        },
       ]
       return h(
         DialogShell,
-        { layerRef, tt, onClose, wide: true, eyebrow: tt('stats.eyebrow'), title: tt('stats.title') },
+        { layerRef, tt, onClose, wide: true, title: tt('stats.title') },
         h(
           'div',
           { className: 'bs-dialog-body' },
@@ -2936,7 +2842,7 @@ window.__ModuleLoader__.load({
               onClick: () => setYear(value => value - 1),
               'aria-label': tt('stats.prev'),
               title: tt('stats.prev'),
-            }, h(ChevronIcon, { size: 15 })),
+            }, h(ChevronIcon, { size: 16 })),
             h('strong', { className: 'bs-year-label', 'aria-live': 'polite' }, String(year)),
             h('button', {
               type: 'button',
@@ -2945,16 +2851,16 @@ window.__ModuleLoader__.load({
               disabled: year >= thisYear,
               'aria-label': tt('stats.next'),
               title: tt('stats.next'),
-            }, h(ChevronIcon, { size: 15, flip: true })),
+            }, h(ChevronIcon, { size: 16, flip: true })),
           ),
           h(
-            'div',
+            'dl',
             { className: 'bs-stat-tiles' },
-            tiles.map(tile => h('div', { key: tile.label, className: 'bs-stat-tile' },
-              h('strong', null, String(tile.value)), h('span', null, tile.label))),
+            tiles.map(tile => h('div', { key: tile.id, className: 'bs-stat-tile' },
+              h('dt', null, tile.label), h('dd', null, tile.value))),
           ),
           stats.finished.length === 0
-            ? h('p', { className: 'bs-import-hint' }, tt('stats.empty'))
+            ? h('p', { className: 'bs-dialog-text' }, tt('stats.empty'))
             : [
                 h('div', { key: 'months', className: 'bs-field' },
                   h('span', { className: 'bs-field-label' }, tt('stats.byMonth')),
@@ -2968,12 +2874,11 @@ window.__ModuleLoader__.load({
                           key: index,
                           className: 'bs-month',
                           role: 'listitem',
-                          title: `${tt('stats.month', { month: index + 1 })}: ${count}`,
-                          'aria-label': `${tt('stats.month', { month: index + 1 })}: ${count}`,
+                          'aria-label': tt('stats.monthCount', { month: months[index].long, count: formatNumber(count, activeLocale) }),
                         },
-                        h('span', { className: 'bs-month-count' }, count > 0 ? String(count) : ''),
+                        h('span', { className: 'bs-month-count', 'aria-hidden': true }, count > 0 ? formatNumber(count, activeLocale) : ''),
                         h('span', { className: 'bs-month-bar', style: { height: `${Math.round((count / peak) * 100)}%` } }),
-                        h('span', { className: 'bs-month-label' }, String(index + 1)),
+                        h('span', { className: 'bs-month-label', 'aria-hidden': true }, months[index].short),
                       ),
                     ),
                   )),
@@ -2986,7 +2891,8 @@ window.__ModuleLoader__.load({
                         type: 'button',
                         className: 'bs-tag',
                         onClick: () => onTag(tag),
-                      }, `#${tag} · ${count}`)))),
+                        title: tt('book.filterTag', { tag }),
+                      }, `#${tag}`, h('span', { className: 'bs-tag-count' }, formatNumber(count, activeLocale)))))),
                 h('div', { key: 'list', className: 'bs-field' },
                   h('span', { className: 'bs-field-label' }, tt('stats.list')),
                   h(
@@ -3002,7 +2908,7 @@ window.__ModuleLoader__.load({
                           h(BookCover, { title: book.title, cover: book.cover, className: 'bs-cover-sm' }),
                           h('span', { className: 'bs-finished-title' }, book.title,
                             book.author && h('small', null, book.author)),
-                          book.rating > 0 && h('span', { className: 'bs-finished-rating' }, '★'.repeat(book.rating)),
+                          h(RatingStars, { rating: book.rating, tt }),
                           h('span', { className: 'bs-date' }, formatDay(book.finishedAt, activeLocale)),
                         ),
                       ),
@@ -3095,12 +3001,12 @@ window.__ModuleLoader__.load({
     }
 
     /** Status tabs for the flat views; the trailing + adds into the selected status. */
-    function StatusTabs({ filter, counts, tt, onChange, onAdd }) {
+    function StatusTabs({ filter, counts, tt, activeLocale, onChange, onAdd }) {
       const tabs = ['all', ...STATUSES]
       return h(
         'div',
-        { className: 'bs-tabs', role: 'tablist', 'aria-label': tt('status.label') },
-        tabs.map(id =>
+        { className: 'bs-tabs' },
+        h('div', { className: 'bs-tablist', role: 'tablist', 'aria-label': tt('status.label') }, tabs.map(id =>
           h(
             'button',
             {
@@ -3114,9 +3020,9 @@ window.__ModuleLoader__.load({
             },
             id !== 'all' && h(StatusIcon, { status: id, size: 13 }),
             h('span', null, id === 'all' ? tt('view.all') : tt(STATUS_META[id].label)),
-            h('span', { className: 'bs-col-count' }, String(counts[id])),
+            h('span', { className: 'bs-col-count' }, formatNumber(counts[id], activeLocale)),
           ),
-        ),
+        )),
         h('span', { className: 'bs-tabs-spacer' }),
         h(
           'button',
@@ -3127,7 +3033,7 @@ window.__ModuleLoader__.load({
             'aria-label': tt('action.addTo', { status: tt(STATUS_META[filter === 'all' ? 'want' : filter].label) }),
             title: tt('action.addTo', { status: tt(STATUS_META[filter === 'all' ? 'want' : filter].label) }),
           },
-          h(PlusIcon, { size: 13 }),
+          h(PlusIcon, { size: 14 }),
         ),
       )
     }
@@ -3152,7 +3058,7 @@ window.__ModuleLoader__.load({
         sentinel: more > 0 && h(
           'div',
           { ref: sentinelRef, className: 'bs-more' },
-          h('button', { type: 'button', className: 'bs-empty-action', onClick: () => setLimit(current => current + RENDER_STEP) },
+          h('button', { type: 'button', className: 'bs-btn bs-btn-secondary', onClick: () => setLimit(current => current + RENDER_STEP) },
             `+${more}`),
         ),
       }
@@ -3164,17 +3070,19 @@ window.__ModuleLoader__.load({
         'span',
         { className: 'bs-mini-stars', role: 'img', 'aria-label': tt('book.ratingValue', { value: rating }) },
         '★'.repeat(rating),
-        h('span', { className: 'is-off', 'aria-hidden': true }, '★'.repeat(5 - rating)),
+        h('span', { className: 'is-off', 'aria-hidden': true }, '☆'.repeat(5 - rating)),
       )
     }
 
-    function ProgressCell({ book, tt }) {
+    function ProgressCell({ book, tt, activeLocale }) {
       if (book.status !== 'reading') return null
       return h(
         'div',
-        { className: 'bs-row-progress', title: tt('book.progress') },
+        { className: 'bs-row-progress', title: book.pages > 0 && book.currentPage > 0
+          ? tt('book.pageOf', { page: formatNumber(book.currentPage, activeLocale), pages: formatNumber(book.pages, activeLocale) })
+          : tt('book.progress') },
         h('div', { className: 'bs-track' }, h('span', { className: 'bs-fill', style: { width: `${book.progress}%` } })),
-        h('span', null, book.pages > 0 && book.currentPage > 0 ? `${book.currentPage}/${book.pages}` : `${book.progress}%`),
+        h('span', null, formatNumber(book.progress / 100, activeLocale, { style: 'percent' })),
       )
     }
 
@@ -3206,7 +3114,7 @@ window.__ModuleLoader__.load({
                 title: tt('book.edit', { title: book.title }),
               },
               h('span', { className: 'bs-list-title' }, book.title),
-              h('span', { className: 'bs-list-author' }, book.author || tt('book.unknownAuthor')),
+              book.author !== '' && h('span', { className: 'bs-list-author' }, book.author),
             ),
             h(
               'div',
@@ -3215,26 +3123,13 @@ window.__ModuleLoader__.load({
                 h('button', { key: tag, type: 'button', className: 'bs-tag', onClick: () => onTag(tag), title: tt('book.filterTag', { tag }) }, `#${tag}`),
               ),
               book.excerpts.length > 0 &&
-                h('span', { className: 'bs-tag is-excerpts', title: tt('book.excerpts', { count: book.excerpts.length }) },
-                  `❝ ${book.excerpts.length}`),
+                h('span', { className: 'bs-tag is-excerpts' },
+                  plural(tt, book.excerpts.length, 'book.excerpts', 'book.excerptsOne', activeLocale)),
             ),
             h('div', { className: 'bs-list-state' },
-              h(ProgressCell, { book, tt }),
+              h(ProgressCell, { book, tt, activeLocale }),
               book.status === 'read' && h(RatingStars, { rating: book.rating, tt })),
-            h(
-              'span',
-              { className: 'bs-select-wrap' },
-              h(
-                'select',
-                {
-                  className: 'bs-status-select',
-                  value: book.status,
-                  onChange: event => onStatus(book.id, event.target.value),
-                  'aria-label': tt('book.statusFor', { title: book.title }),
-                },
-                STATUSES.map(status => h('option', { key: status, value: status }, tt(STATUS_META[status].label))),
-              ),
-            ),
+            h(StatusSelect, { book, tt, onStatus }),
             h('span', { className: 'bs-date bs-list-date' }, formatAdded(book, activeLocale, tt)),
           ),
         ),
@@ -3257,7 +3152,7 @@ window.__ModuleLoader__.load({
               className: syncingIds.has(book.id) ? 'bs-tile is-syncing' : 'bs-tile',
               'data-status': book.status,
               onClick: () => onEdit(book),
-              title: book.author ? `${book.title} · ${book.author}` : book.title,
+              title: book.author ? `${book.title}\n${book.author}` : book.title,
               'aria-label': tt('book.edit', { title: book.title }),
             },
             h(
@@ -3269,8 +3164,7 @@ window.__ModuleLoader__.load({
                 h('span', { className: 'bs-tile-progress' }, h('span', { style: { width: `${book.progress}%` } })),
             ),
             h('span', { className: 'bs-tile-title' }, book.title),
-            h('span', { className: 'bs-tile-sub' },
-              book.status === 'read' && book.rating > 0 ? '★'.repeat(book.rating) : book.author || tt('book.unknownAuthor')),
+            book.author !== '' && h('span', { className: 'bs-tile-sub' }, book.author),
           ),
         ),
         sentinel,
@@ -3279,340 +3173,300 @@ window.__ModuleLoader__.load({
 
     /* ── page ──────────────────────────────────────────────────────────── */
 
+    /**
+     * Design tokens. The panel keeps its own warm palette instead of the host's
+     * blue-grays; light and dark follow the host's `body[data-ds-dark-theme]`.
+     * Accent: 黛绿 #426666 (light) and 青碧 #48c0a3 (dark), from the common
+     * Chinese traditional color table; ≥4.5:1 on every surface they sit on.
+     * Type scale has four steps: 12 / 14 / 17 / 24.
+     */
     const CSS = `
+.bs-page{--bs-bg:#faf8f5;--bs-surface:#fffefc;--bs-sunken:#f2efea;--bs-hover:#ebe7e0;--bs-line:#e6e1d9;--bs-line-strong:#d3ccc1;--bs-ink:#2b2722;--bs-ink-2:#6b6359;--bs-accent:#426666;--bs-on-accent:#fff;--bs-accent-soft:color-mix(in srgb,#426666 12%,transparent);--bs-danger:#9d2933;--bs-scrim:rgba(43,39,34,.36);--bs-shadow:0 12px 40px rgba(43,39,34,.18),0 2px 8px rgba(43,39,34,.08);--bs-cover-line:rgba(43,39,34,.12);--bs-fs-s:12px;--bs-fs-m:14px;--bs-fs-l:17px;--bs-fs-xl:24px;--bs-r-s:6px;--bs-r-m:8px;--bs-r-l:12px;--bs-r-xl:16px;--bs-control:32px;--bs-gutter:clamp(16px,2.6vw,32px)}
+body[data-ds-dark-theme] .bs-page{--bs-bg:#1a1917;--bs-surface:#22201e;--bs-sunken:#2b2926;--bs-hover:#34312d;--bs-line:#36332f;--bs-line-strong:#4a463f;--bs-ink:#efebe5;--bs-ink-2:#ada499;--bs-accent:#48c0a3;--bs-on-accent:#1a1917;--bs-accent-soft:color-mix(in srgb,#48c0a3 14%,transparent);--bs-danger:#e8857f;--bs-scrim:rgba(0,0,0,.5);--bs-shadow:0 12px 40px rgba(0,0,0,.5);--bs-cover-line:rgba(255,255,255,.1)}
 .bs-page,.bs-page *{box-sizing:border-box}
-.bs-page{--bs-gutter:clamp(18px,2.6vw,32px);position:relative;display:flex;flex-direction:column;width:100%;height:100%;min-height:0;overflow:hidden;padding-left:var(--dsh-frame-leading-clearance,0px);background:radial-gradient(120% 70% at 0% 0%,color-mix(in srgb,var(--dsw-alias-brand-primary) 8%,transparent),transparent 62%),var(--dsw-alias-bg-base);color:var(--dsw-alias-label-primary);font-family:inherit}
-.bs-head{display:flex;align-items:flex-start;gap:24px;flex:none;padding:26px var(--bs-gutter) 0}
-.bs-heading{min-width:0;flex:1}
-.bs-kicker{display:inline-flex;align-items:center;gap:7px;margin:0;color:var(--dsw-alias-label-secondary);font-size:10px;font-weight:650;letter-spacing:.16em;line-height:1.2;text-transform:uppercase;user-select:none}
-.bs-kicker-mark{display:inline-flex;align-items:center;justify-content:center;color:var(--dsw-alias-brand-primary)}
-.bs-title{margin:9px 0 5px;font-size:clamp(25px,2.9vw,33px);font-weight:750;letter-spacing:-.025em;line-height:1.12}
-.bs-subtitle{max-width:52ch;margin:0;color:var(--dsw-alias-label-secondary);font-size:13px;line-height:1.55}
-.bs-stats{display:flex;align-items:stretch;flex:none;margin-top:6px;overflow:hidden;border:1px solid var(--dsw-alias-border-l1);border-radius:14px;background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 82%,transparent)}
-.bs-stat{display:flex;flex-direction:column;justify-content:center;gap:3px;min-width:76px;padding:10px 16px;color:var(--dsw-alias-label-secondary);font-size:10.5px;white-space:nowrap}
-.bs-stat+.bs-stat{border-left:1px solid var(--dsw-alias-border-l1)}
-.bs-stat strong{color:var(--dsw-alias-label-primary);font-size:20px;font-variant-numeric:tabular-nums;font-weight:720;letter-spacing:-.02em;line-height:1}
-.bs-stat[data-status="reading"] strong{color:var(--dsw-alias-brand-primary)}
-.bs-stat[data-status="read"] strong{color:var(--dsw-alias-state-success-primary)}
-.bs-tool:focus-visible,.bs-cover-button:focus-visible,.bs-check input:focus-visible,.bs-icon-button:focus-visible,.bs-col-add:focus-visible,.bs-edit:focus-visible,.bs-empty-action:focus-visible,.bs-btn:focus-visible,.bs-seg-button:focus-visible,.bs-star-button:focus-visible,.bs-clear-rating:focus-visible,.bs-search-clear:focus-visible{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:2px}
-.bs-toolbar{display:flex;align-items:center;gap:12px;flex:none;flex-wrap:wrap;padding:18px var(--bs-gutter) 0}
-.bs-search{position:relative;display:flex;align-items:center;flex:1 1 280px;max-width:430px;min-width:200px}
-.bs-search-icon{position:absolute;left:12px;display:inline-flex;color:var(--dsw-alias-label-secondary);pointer-events:none}
-.bs-search-input{width:100%;height:38px;padding:0 38px 0 36px;border:1px solid var(--dsw-alias-border-l2);border-radius:10px;outline:none;background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary);font:inherit;font-size:12.5px;transition:border-color .15s ease,box-shadow .15s ease}
-.bs-search-input::placeholder{color:var(--dsw-alias-label-secondary);opacity:.7}
-.bs-search-input:focus{border-color:var(--dsw-alias-brand-primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--dsw-alias-brand-primary) 16%,transparent)}
+.bs-page{position:relative;display:flex;flex-direction:column;width:100%;height:100%;min-height:0;overflow:hidden;padding-left:var(--dsh-frame-leading-clearance,0px);background:var(--bs-bg);color:var(--bs-ink);font-family:inherit;font-size:var(--bs-fs-m);line-height:1.5;overflow-wrap:break-word}
+:where(.bs-page) :where(button,input,select,textarea){font:inherit;color:inherit}
+.bs-page :focus-visible{outline:2px solid var(--bs-accent);outline-offset:2px}
+.bs-head{display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 16px;flex:none;padding:28px var(--bs-gutter) 0}
+.bs-title{margin:0;font-size:var(--bs-fs-xl);font-weight:700;line-height:1.3}
+.bs-summary{margin:0;color:var(--bs-ink-2);font-size:var(--bs-fs-m)}
+.bs-toolbar{display:flex;align-items:center;flex-wrap:wrap;gap:8px 12px;flex:none;padding:20px var(--bs-gutter) 0}
+.bs-search{position:relative;display:flex;align-items:center;flex:1 1 240px;max-width:420px;min-width:200px}
+.bs-search-icon{position:absolute;left:10px;display:inline-flex;color:var(--bs-ink-2);pointer-events:none}
+.bs-search-input{width:100%;height:var(--bs-control);padding:0 36px 0 34px;border:1px solid var(--bs-line-strong);border-radius:var(--bs-r-m);outline:none;background:var(--bs-surface);font-size:var(--bs-fs-m)}
+.bs-search-input::placeholder,.bs-input::placeholder,.bs-textarea::placeholder{color:var(--bs-ink-2);opacity:1}
+.bs-search-input:focus,.bs-input:focus,.bs-textarea:focus{border-color:var(--bs-accent);outline:none}
 .bs-search-input::-webkit-search-cancel-button{-webkit-appearance:none;appearance:none}
-.bs-search-clear{position:absolute;right:5px;display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;padding:0;border:none;border-radius:7px;background:transparent;color:var(--dsw-alias-label-secondary);cursor:pointer}
-.bs-search-clear:hover{background:var(--dsw-alias-bg-layer-2);color:var(--dsw-alias-label-primary)}
-.bs-sort{display:inline-flex;align-items:center;gap:8px;color:var(--dsw-alias-label-secondary);font-size:11.5px;white-space:nowrap}
-.bs-sort-wrap{position:relative;display:inline-flex;align-items:center}
-.bs-sort-wrap::after{content:"";position:absolute;right:10px;width:5px;height:5px;border-right:1.5px solid var(--dsw-alias-label-secondary);border-bottom:1.5px solid var(--dsw-alias-label-secondary);transform:rotate(45deg) translateY(-2px);pointer-events:none}
-.bs-sort-select{height:34px;padding:0 28px 0 10px;border:1px solid var(--dsw-alias-border-l2);border-radius:9px;outline:none;appearance:none;background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary);font:inherit;font-size:12px;cursor:pointer}
-.bs-sort-select:focus-visible{border-color:var(--dsw-alias-brand-primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--dsw-alias-brand-primary) 16%,transparent)}
+.bs-search-clear{position:absolute;right:4px;display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;padding:0;border:none;border-radius:var(--bs-r-s);background:transparent;color:var(--bs-ink-2);cursor:pointer}
+.bs-search-clear:hover{background:var(--bs-hover);color:var(--bs-ink)}
+.bs-sort{position:relative;display:inline-flex;align-items:center}
+.bs-select-wrap{position:relative;display:inline-flex;align-items:center;min-width:0}
+.bs-sort::after,.bs-select-wrap::after{content:"";position:absolute;right:11px;width:5px;height:5px;border-right:1.5px solid var(--bs-ink-2);border-bottom:1.5px solid var(--bs-ink-2);transform:rotate(45deg) translateY(-2px);pointer-events:none}
+.bs-sort-select{height:var(--bs-control);padding:0 30px 0 10px;border:1px solid var(--bs-line-strong);border-radius:var(--bs-r-m);outline:none;appearance:none;background:var(--bs-surface);font-size:var(--bs-fs-m);cursor:pointer}
+.bs-view-switch{display:inline-flex;align-items:center;gap:2px;padding:3px;border-radius:10px;background:var(--bs-sunken)}
+.bs-view-button{display:inline-flex;align-items:center;gap:6px;height:26px;padding:0 10px;border:none;border-radius:7px;background:transparent;color:var(--bs-ink-2);font-size:var(--bs-fs-m);white-space:nowrap;cursor:pointer}
+.bs-view-button:hover{color:var(--bs-ink)}
+.bs-view-button[aria-pressed="true"]{background:var(--bs-surface);color:var(--bs-ink);font-weight:600}
+.bs-toolbar-meta{color:var(--bs-ink-2);font-size:var(--bs-fs-s);white-space:nowrap}
 .bs-toolbar-spacer{flex:1}
-.bs-toolbar-meta{color:var(--dsw-alias-label-secondary);font-size:11.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
-.bs-storage{display:inline-flex;align-items:center;gap:6px;padding:5px 9px;border:1px solid var(--dsw-alias-border-l1);border-radius:999px;background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-secondary);font-size:10.5px;white-space:nowrap}
-.bs-storage-dot{flex:none;width:6px;height:6px;border-radius:50%;background:var(--dsw-alias-state-success-primary)}
-.bs-storage.is-loading .bs-storage-dot,.bs-storage.is-saving .bs-storage-dot{background:var(--dsw-alias-brand-primary);animation:bs-pulse 1.2s ease-in-out infinite}
-.bs-storage.is-offline{border-color:color-mix(in srgb,var(--dsw-alias-state-warn-primary) 48%,var(--dsw-alias-border-l1));color:var(--dsw-alias-state-warn-primary)}
-.bs-storage.is-offline .bs-storage-dot{background:var(--dsw-alias-state-warn-primary)}
-.bs-actions{display:flex;align-items:center;gap:8px;flex:none}
-.bs-tool{position:relative;display:inline-flex;align-items:center;gap:7px;height:36px;padding:0 12px;border:1px solid var(--dsw-alias-border-l2);border-radius:10px;background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary);font:inherit;font-size:12.5px;font-weight:600;white-space:nowrap;cursor:pointer;transition:background .15s ease,border-color .15s ease}
-.bs-tool:hover:not(:disabled){background:var(--dsw-alias-bg-layer-2)}
-.bs-tool:disabled{opacity:.6;cursor:default}
-.bs-tool svg{color:var(--dsw-alias-brand-primary)}
-.bs-badge{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:var(--dsw-alias-brand-primary);color:var(--dsw-alias-bg-base);font-size:10.5px;font-variant-numeric:tabular-nums;font-weight:700}
-.bs-sync{display:flex;align-items:center;gap:12px;flex:none;margin:14px var(--bs-gutter) 0;padding:10px 12px 10px 14px;border:1px solid color-mix(in srgb,var(--dsw-alias-brand-primary) 35%,var(--dsw-alias-border-l1));border-radius:12px;background:color-mix(in srgb,var(--dsw-alias-brand-primary) 7%,var(--dsw-alias-bg-layer-1));animation:bs-in .2s ease}
-.bs-sync.is-done{border-color:color-mix(in srgb,var(--dsw-alias-state-success-primary) 40%,var(--dsw-alias-border-l1));background:color-mix(in srgb,var(--dsw-alias-state-success-primary) 7%,var(--dsw-alias-bg-layer-1))}
-.bs-sync.is-error{border-color:color-mix(in srgb,var(--dsw-alias-state-error-primary) 45%,var(--dsw-alias-border-l1));background:color-mix(in srgb,var(--dsw-alias-state-error-primary) 6%,var(--dsw-alias-bg-layer-1))}
-.bs-sync-icon{display:inline-flex;flex:none;color:var(--dsw-alias-brand-primary)}
-.bs-sync.is-done .bs-sync-icon{color:var(--dsw-alias-state-success-primary)}
-.bs-sync.is-error .bs-sync-icon{color:var(--dsw-alias-state-error-primary)}
-.bs-sync-body{display:flex;flex-direction:column;gap:7px;flex:1;min-width:0}
-.bs-sync-text{display:flex;align-items:baseline;gap:8px;flex:1;min-width:0;margin:0;font-size:12px;line-height:1.45}
-.bs-sync-text strong{font-weight:650;font-variant-numeric:tabular-nums;white-space:nowrap}
-.bs-sync-current{overflow:hidden;color:var(--dsw-alias-label-secondary);text-overflow:ellipsis;white-space:nowrap}
+.bs-actions{display:flex;align-items:center;flex-wrap:wrap;gap:8px}
+.bs-btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:var(--bs-control);max-width:100%;padding:4px 12px;border:1px solid transparent;border-radius:var(--bs-r-m);background:transparent;font-size:var(--bs-fs-m);font-weight:500;line-height:1.4;text-align:center;cursor:pointer;transition:background-color .15s ease,border-color .15s ease}
+.bs-btn>span{min-width:0}
+.bs-btn:disabled{opacity:.45;cursor:default}
+.bs-btn-primary{background:var(--bs-accent);color:var(--bs-on-accent);font-weight:600}
+.bs-btn-primary:hover:not(:disabled){background:color-mix(in srgb,var(--bs-accent) 88%,var(--bs-ink))}
+.bs-btn-secondary{border-color:var(--bs-line-strong);background:var(--bs-surface);color:var(--bs-ink)}
+.bs-btn-secondary:hover:not(:disabled){background:var(--bs-hover)}
+.bs-btn-quiet{padding:0 8px;color:var(--bs-ink-2)}
+.bs-btn-quiet:hover:not(:disabled){background:var(--bs-hover);color:var(--bs-ink)}
+.bs-btn-sm{min-height:28px;padding:2px 10px}
+.bs-btn svg{flex:none}
+.bs-badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:999px;background:var(--bs-sunken);color:var(--bs-ink-2);font-size:var(--bs-fs-s);font-variant-numeric:tabular-nums}
+.bs-notice{display:flex;align-items:center;gap:12px;flex:none;margin:16px var(--bs-gutter) 0;padding:10px 12px;border-radius:var(--bs-r-m);background:var(--bs-sunken);font-size:var(--bs-fs-m);line-height:1.6}
+.bs-notice-icon{display:inline-flex;flex:none;color:var(--bs-ink-2)}
+.bs-notice-body{display:flex;flex-direction:column;gap:8px;flex:1;min-width:0}
+.bs-notice-text{display:flex;flex-wrap:wrap;column-gap:.5em;margin:0;min-width:0}
+.bs-notice-text strong{font-weight:600;font-variant-numeric:tabular-nums}
+.bs-sync-current{min-width:0;overflow:hidden;color:var(--bs-ink-2);text-overflow:ellipsis;white-space:nowrap}
 .bs-spin{animation:bs-spin .8s linear infinite}
 @keyframes bs-spin{to{transform:rotate(360deg)}}
-@keyframes bs-in{from{opacity:0;transform:translateY(-4px)}}
-@keyframes bs-pulse{50%{opacity:.55}}
-.bs-save-error{margin:10px var(--bs-gutter) 0;padding:8px 11px;border:1px solid color-mix(in srgb,var(--dsw-alias-state-warn-primary) 55%,transparent);border-radius:9px;color:var(--dsw-alias-state-warn-primary);font-size:11.5px;line-height:1.5}
-.bs-view-switch{display:inline-flex;align-items:center;gap:2px;padding:2px;border:1px solid var(--dsw-alias-border-l2);border-radius:10px;background:var(--dsw-alias-bg-layer-1)}
-.bs-view-button{display:inline-flex;align-items:center;gap:5px;height:28px;padding:0 9px;border:none;border-radius:7px;background:transparent;color:var(--dsw-alias-label-secondary);font:inherit;font-size:11.5px;white-space:nowrap;cursor:pointer}
-.bs-view-button:hover{color:var(--dsw-alias-label-primary)}
-.bs-view-button[aria-pressed="true"]{background:var(--dsw-alias-bg-base);color:var(--dsw-alias-label-primary);font-weight:650;box-shadow:0 1px 3px color-mix(in srgb,var(--dsw-alias-label-primary) 10%,transparent)}
-.bs-view-button:focus-visible,.bs-tab:focus-visible,.bs-tile:focus-visible,.bs-list-main:focus-visible{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:2px}
-.bs-flat{display:flex;flex-direction:column;flex:1;min-height:0;margin:16px var(--bs-gutter) 22px;overflow:hidden;border:1px solid var(--dsw-alias-border-l1);border-radius:16px;background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 78%,transparent)}
-.bs-tabs{display:flex;align-items:center;gap:4px;flex:none;padding:10px 12px;border-bottom:1px solid var(--dsw-alias-border-l1);overflow-x:auto}
-.bs-tabs-spacer{flex:1}
-.bs-tab{display:inline-flex;align-items:center;gap:6px;height:30px;padding:0 10px;border:none;border-radius:8px;background:transparent;color:var(--dsw-alias-label-secondary);font:inherit;font-size:12px;white-space:nowrap;cursor:pointer}
-.bs-tab:hover{background:var(--dsw-alias-bg-layer-2);color:var(--dsw-alias-label-primary)}
-.bs-tab[aria-selected="true"]{background:var(--dsw-alias-bg-base);color:var(--dsw-alias-label-primary);font-weight:650;box-shadow:0 1px 3px color-mix(in srgb,var(--dsw-alias-label-primary) 10%,transparent)}
-.bs-tab[data-status="want"] svg{color:var(--dsw-alias-state-idle-primary)}
-.bs-tab[data-status="reading"] svg{color:var(--dsw-alias-brand-primary)}
-.bs-tab[data-status="read"] svg{color:var(--dsw-alias-state-success-primary)}
-.bs-tabs .bs-col-add{margin-left:0}
-.bs-flat-body{flex:1;min-height:0;overflow-y:auto;padding:8px 12px 14px;scrollbar-width:thin;scrollbar-color:var(--dsw-alias-border-l2) transparent}
-.bs-flat-body .bs-empty{margin-top:8px}
-.bs-list{display:flex;flex-direction:column}
-.bs-list-row{--bs-accent:var(--dsw-alias-state-idle-primary);display:grid;grid-template-columns:28px minmax(160px,2fr) minmax(0,1.4fr) 132px auto 104px;align-items:center;gap:12px;padding:7px 6px;border-bottom:1px solid var(--dsw-alias-border-l1)}
-.bs-list-row[data-status="reading"]{--bs-accent:var(--dsw-alias-brand-primary)}
-.bs-list-row[data-status="read"]{--bs-accent:var(--dsw-alias-state-success-primary)}
-.bs-list-row:hover{background:var(--dsw-alias-bg-layer-2);border-radius:8px}
-.bs-list-row.is-syncing .bs-list-main{animation:bs-pulse 1.2s ease-in-out infinite}
-.bs-list-main{display:flex;flex-direction:column;gap:2px;min-width:0;padding:0;border:none;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer}
-.bs-list-title{overflow:hidden;font-size:13px;font-weight:620;text-overflow:ellipsis;white-space:nowrap}
-.bs-list-author{overflow:hidden;color:var(--dsw-alias-label-secondary);font-size:11px;text-overflow:ellipsis;white-space:nowrap}
-.bs-list-tags{display:flex;gap:4px;min-width:0;overflow:hidden}
-.bs-list-tags .bs-tag{flex:none;margin:0}
-.bs-list-state{display:flex;align-items:center;min-width:0}
-.bs-row-progress{display:flex;align-items:center;gap:7px;width:100%;color:var(--dsw-alias-label-secondary);font-size:10.5px;font-variant-numeric:tabular-nums;white-space:nowrap}
-.bs-row-progress .bs-track{flex:1}
-.bs-mini-stars{color:var(--dsw-alias-state-warn-primary);font-size:11px;letter-spacing:.04em;white-space:nowrap}
-.bs-mini-stars .is-off{color:var(--dsw-alias-border-l2)}
-.bs-list-date{text-align:right}
-.bs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(118px,1fr));gap:18px 14px;padding-top:6px}
-.bs-tile{display:flex;flex-direction:column;gap:5px;min-width:0;padding:0;border:none;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer}
-.bs-tile-cover{position:relative;display:block;transition:transform .15s ease}
-.bs-tile:hover .bs-tile-cover{transform:translateY(-2px)}
-.bs-tile.is-syncing .bs-tile-cover{animation:bs-pulse 1.2s ease-in-out infinite}
-.bs-cover.bs-cover-tile{width:100%;height:auto;aspect-ratio:2/3;border-radius:4px 9px 9px 4px;box-shadow:inset 3px 0 0 rgba(0,0,0,.18),0 4px 12px rgba(0,0,0,.16)}
-.bs-cover.bs-cover-tile .bs-cover-letter{font-size:34px}
-.bs-cover.bs-cover-tile::after{left:58%}
-.bs-tile-badge{position:absolute;top:6px;left:6px;z-index:3;display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:50%;background:rgba(0,0,0,.5);color:#fff}
-.bs-tile[data-status="reading"] .bs-tile-badge{background:var(--dsw-alias-brand-primary)}
-.bs-tile[data-status="read"] .bs-tile-badge{background:var(--dsw-alias-state-success-primary)}
-.bs-tile-progress{position:absolute;right:6px;bottom:6px;left:6px;z-index:3;height:4px;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.55)}
-.bs-tile-progress span{display:block;height:100%;border-radius:inherit;background:var(--dsw-alias-brand-primary)}
-.bs-tile-title{display:-webkit-box;overflow:hidden;font-size:12px;font-weight:620;line-height:1.35;-webkit-box-orient:vertical;-webkit-line-clamp:2}
-.bs-tile-sub{overflow:hidden;color:var(--dsw-alias-label-secondary);font-size:10.5px;text-overflow:ellipsis;white-space:nowrap}
-.bs-tile[data-status="read"] .bs-tile-sub{color:var(--dsw-alias-state-warn-primary)}
-.bs-more{display:flex;justify-content:center;padding:14px 0 4px;grid-column:1/-1}
-.bs-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;flex:1;min-height:0;padding:16px var(--bs-gutter) 22px;overflow:hidden}
-.bs-board-empty{display:flex;align-items:center;justify-content:center}
-.bs-column{display:flex;flex-direction:column;min-width:0;min-height:0;overflow:hidden;border:1px solid var(--dsw-alias-border-l1);border-top:3px solid color-mix(in srgb,var(--bs-accent) 70%,transparent);border-radius:16px;background:color-mix(in srgb,var(--dsw-alias-bg-layer-1) 78%,transparent)}
-.bs-column[data-status="want"]{--bs-accent:var(--dsw-alias-state-idle-primary)}
-.bs-column[data-status="reading"]{--bs-accent:var(--dsw-alias-brand-primary)}
-.bs-column[data-status="read"]{--bs-accent:var(--dsw-alias-state-success-primary)}
-.bs-col-head{flex:none;padding:14px 14px 0}
-.bs-col-title-row{display:flex;align-items:center;gap:8px;min-width:0}
-.bs-col-icon{display:inline-flex;color:var(--bs-accent)}
-.bs-col-title{margin:0;font-size:13px;font-weight:700;letter-spacing:-.01em;white-space:nowrap}
-.bs-col-count{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:18px;padding:0 6px;border-radius:999px;background:var(--dsw-alias-bg-layer-2);color:var(--dsw-alias-label-secondary);font-size:10.5px;font-variant-numeric:tabular-nums}
-.bs-col-add{display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;margin-left:auto;padding:0;border:1px solid var(--dsw-alias-border-l1);border-radius:7px;background:transparent;color:var(--dsw-alias-label-secondary);cursor:pointer;transition:background .15s ease,color .15s ease,border-color .15s ease}
-.bs-col-add:hover{background:var(--dsw-alias-bg-layer-2);border-color:var(--dsw-alias-border-l2);color:var(--dsw-alias-label-primary)}
-.bs-col-hint{margin:6px 0 0;color:var(--dsw-alias-label-secondary);font-size:11px;line-height:1.45}
-.bs-col-body{display:flex;flex-direction:column;gap:10px;flex:1;min-height:0;overflow-y:auto;padding:12px;scrollbar-width:thin;scrollbar-color:var(--dsw-alias-border-l2) transparent}
-.bs-col-body::-webkit-scrollbar{width:8px}
-.bs-col-body::-webkit-scrollbar-thumb{border:2px solid transparent;border-radius:99px;background:var(--dsw-alias-border-l2);background-clip:padding-box}
-.bs-card{position:relative;flex:none;padding:12px;border:1px solid var(--dsw-alias-border-l1);border-radius:12px;background:var(--dsw-alias-bg-base);transition:border-color .15s ease,box-shadow .15s ease}
-.bs-card:hover{border-color:var(--dsw-alias-border-l2);box-shadow:0 6px 18px color-mix(in srgb,var(--dsw-alias-label-primary) 8%,transparent);transform:translateY(-1px)}
-.bs-card{transition:border-color .15s ease,box-shadow .15s ease,transform .15s ease}
+@keyframes bs-in{from{opacity:0;transform:translateY(4px)}}
+@keyframes bs-pulse{50%{opacity:.5}}
+.bs-board{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px;flex:1;min-height:0;padding:24px var(--bs-gutter) 0;overflow:hidden}
+.bs-column{display:flex;flex-direction:column;min-width:0;min-height:0}
+.bs-col-head{display:flex;align-items:center;gap:8px;flex:none;min-height:28px;padding:0 0 12px;border-bottom:1px solid var(--bs-line)}
+.bs-col-icon{display:inline-flex;color:var(--bs-ink-2)}
+.bs-column[data-status="reading"] .bs-col-icon{color:var(--bs-accent)}
+.bs-col-title{margin:0;font-size:var(--bs-fs-m);font-weight:600;white-space:nowrap}
+.bs-col-count{color:var(--bs-ink-2);font-size:var(--bs-fs-s);font-variant-numeric:tabular-nums}
+.bs-col-add{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;margin-left:auto;padding:0;border:none;border-radius:var(--bs-r-s);background:transparent;color:var(--bs-ink-2);cursor:pointer}
+.bs-col-add:hover{background:var(--bs-hover);color:var(--bs-ink)}
+.bs-col-body{display:flex;flex-direction:column;gap:12px;flex:1;min-height:0;overflow-y:auto;padding:12px 2px 24px;scrollbar-width:thin;scrollbar-color:var(--bs-line-strong) transparent}
+.bs-card{position:relative;flex:none;padding:12px;border:1px solid var(--bs-line);border-radius:var(--bs-r-l);background:var(--bs-surface);transition:border-color .15s ease}
+.bs-card:hover{border-color:var(--bs-line-strong)}
 .bs-card.is-syncing .bs-book-info{animation:bs-pulse 1.2s ease-in-out infinite}
-.bs-card-top{display:flex;align-items:flex-start;gap:12px;min-width:0}
-.bs-cover-button{position:relative;flex:none;padding:0;border:none;border-radius:4px 7px 7px 4px;background:transparent;cursor:pointer}
-.bs-cover-busy{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;border-radius:inherit;background:rgba(0,0,0,.38);color:#fff}
-.bs-cover{position:relative;display:flex;align-items:center;justify-content:center;flex:none;width:48px;height:68px;overflow:hidden;border-radius:3px 6px 6px 3px;background:linear-gradient(155deg,color-mix(in srgb,var(--bs-cover-bg) 82%,#fff) 0%,var(--bs-cover-bg) 58%,color-mix(in srgb,var(--bs-cover-bg) 84%,#000) 100%);color:var(--bs-cover-ink);box-shadow:inset 3px 0 0 rgba(0,0,0,.18),0 2px 5px rgba(0,0,0,.16)}
-.bs-cover::before{content:"";position:absolute;top:4px;right:4px;width:4px;height:4px;border-radius:50%;background:currentColor;opacity:.55}
-.bs-cover::after{content:"";position:absolute;left:26px;top:0;bottom:0;width:1px;background:currentColor;opacity:.16}
-.bs-cover-img{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;background:var(--dsw-alias-bg-layer-2)}
-.bs-cover.has-image::before,.bs-cover.has-image::after{display:none}
-.bs-cover.has-image{box-shadow:0 2px 6px rgba(0,0,0,.2)}
-.bs-cover-lg{width:96px;height:136px;border-radius:4px 9px 9px 4px}
+.bs-card-open{display:flex;align-items:flex-start;gap:12px;width:100%;min-width:0;padding:0;border:none;background:transparent;text-align:left;cursor:pointer}
+.bs-card-open:hover .bs-book-title{text-decoration:underline;text-decoration-color:var(--bs-line-strong);text-underline-offset:3px}
+.bs-cover-wrap{position:relative;flex:none;display:block}
+.bs-cover-busy{position:absolute;inset:0;z-index:3;display:flex;align-items:center;justify-content:center;border-radius:3px 6px 6px 3px;background:rgba(0,0,0,.4);color:#fff}
+.bs-cover-button{flex:none;padding:0;border:none;background:transparent;cursor:pointer}
+.bs-cover{position:relative;display:flex;align-items:center;justify-content:center;flex:none;width:48px;height:68px;overflow:hidden;border-radius:3px 6px 6px 3px;background:linear-gradient(155deg,color-mix(in srgb,var(--bs-cover-bg) 84%,#fff) 0%,var(--bs-cover-bg) 60%,color-mix(in srgb,var(--bs-cover-bg) 86%,#000) 100%);color:var(--bs-cover-ink);box-shadow:inset 3px 0 0 rgba(0,0,0,.16),inset 0 0 0 1px var(--bs-cover-line)}
+.bs-cover::after{content:"";position:absolute;left:26px;top:0;bottom:0;width:1px;background:currentColor;opacity:.14}
+.bs-cover-img{position:absolute;inset:0;z-index:2;width:100%;height:100%;object-fit:cover;background:var(--bs-sunken)}
+.bs-cover.has-image::after{display:none}
+.bs-cover-letter{position:relative;z-index:1;font-size:var(--bs-fs-l);font-weight:700;line-height:1}
+.bs-cover-lg{width:96px;height:136px;border-radius:4px 8px 8px 4px}
 .bs-cover-lg::after{left:66px}
-.bs-cover-lg .bs-cover-letter{font-size:34px}
-.bs-cover-letter{position:relative;z-index:1;font-size:19px;font-weight:750;line-height:1;text-shadow:0 1px 1px rgba(0,0,0,.18)}
-.bs-book-info{min-width:0;flex:1}
-.bs-book-title{display:-webkit-box;overflow:hidden;margin:1px 0 0;font-size:13.5px;font-weight:650;letter-spacing:-.012em;line-height:1.35;-webkit-box-orient:vertical;-webkit-line-clamp:2}
-.bs-book-author{overflow:hidden;margin:4px 0 0;color:var(--dsw-alias-label-secondary);font-size:11.5px;line-height:1.35;text-overflow:ellipsis;white-space:nowrap}
-.bs-book-meta{overflow:hidden;margin:5px 0 0;color:var(--dsw-alias-label-secondary);font-size:10.5px;line-height:1.35;text-overflow:ellipsis;white-space:nowrap;opacity:.85}
-.bs-book-meta.is-missing{color:var(--dsw-alias-state-warn-primary);opacity:1}
-.bs-desc{display:-webkit-box;overflow:hidden;margin:10px 0 0;color:var(--dsw-alias-label-secondary);font-size:11px;line-height:1.6;-webkit-box-orient:vertical;-webkit-line-clamp:3}
-.bs-edit{display:inline-flex;align-items:center;justify-content:center;flex:none;width:26px;height:26px;margin:-3px -4px 0 0;padding:0;border:none;border-radius:7px;background:transparent;color:var(--dsw-alias-label-secondary);opacity:.55;cursor:pointer;transition:opacity .15s ease,background .15s ease,color .15s ease}
-.bs-card:hover .bs-edit,.bs-edit:focus-visible{opacity:1}
-.bs-edit:hover{background:var(--dsw-alias-bg-layer-2);color:var(--dsw-alias-label-primary)}
-.bs-progress{margin-top:10px}
-.bs-progress-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:5px;color:var(--dsw-alias-label-secondary);font-size:10.5px;font-variant-numeric:tabular-nums}
-.bs-track{height:4px;overflow:hidden;border-radius:999px;background:var(--dsw-alias-border-l1)}
-.bs-fill{display:block;height:100%;border-radius:inherit;background:var(--bs-accent);transition:width .3s ease}
-.bs-rating{display:flex;align-items:center;gap:1px;margin-top:9px;color:var(--bs-accent);font-size:12px;letter-spacing:.08em;line-height:1}
-.bs-star.is-off{color:var(--dsw-alias-border-l2)}
-.bs-note{display:-webkit-box;overflow:hidden;margin:10px 0 0;padding:7px 9px;border-left:2px solid color-mix(in srgb,var(--bs-accent) 55%,transparent);border-radius:0 7px 7px 0;background:color-mix(in srgb,var(--bs-accent) 7%,transparent);color:var(--dsw-alias-label-secondary);font-size:11px;line-height:1.55;-webkit-box-orient:vertical;-webkit-line-clamp:3}
-.bs-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:9px}
-.bs-tag{max-width:100%;overflow:hidden;padding:2px 7px;border:none;border-radius:999px;background:color-mix(in srgb,var(--bs-accent) 10%,var(--dsw-alias-bg-layer-1));color:var(--dsw-alias-label-secondary);font:inherit;font-size:10.5px;line-height:1.5;text-overflow:ellipsis;white-space:nowrap;cursor:pointer}
-.bs-tag:hover{color:var(--dsw-alias-label-primary)}
-.bs-tag.is-excerpts{background:var(--dsw-alias-bg-layer-2)}
-.bs-tag:focus-visible{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:1px}
-.bs-card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:10px;padding-top:9px;border-top:1px solid var(--dsw-alias-border-l1)}
-.bs-select-wrap{position:relative;display:inline-flex;align-items:center;min-width:0}
-.bs-select-wrap::after{content:"";position:absolute;right:9px;width:5px;height:5px;border-right:1.5px solid var(--dsw-alias-label-secondary);border-bottom:1.5px solid var(--dsw-alias-label-secondary);transform:rotate(45deg) translateY(-2px);pointer-events:none}
-.bs-status-select{height:25px;max-width:126px;padding:0 23px 0 9px;border:1px solid var(--dsw-alias-border-l1);border-radius:999px;outline:none;appearance:none;background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-secondary);font:inherit;font-size:10.5px;cursor:pointer}
-.bs-status-select:hover{border-color:var(--dsw-alias-border-l2);color:var(--dsw-alias-label-primary)}
-.bs-status-select:focus-visible{border-color:var(--dsw-alias-brand-primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--dsw-alias-brand-primary) 14%,transparent)}
-.bs-date{color:var(--dsw-alias-label-secondary);font-size:10px;white-space:nowrap;opacity:.8}
-.bs-empty{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:7px;flex:1;min-height:148px;padding:18px 12px;border:1px dashed var(--dsw-alias-border-l2);border-radius:10px;text-align:center}
-.bs-empty-icon{display:inline-flex;margin-bottom:2px;color:var(--dsw-alias-border-l2)}
-.bs-empty-title{margin:0;color:var(--dsw-alias-label-primary);font-size:12.5px;font-weight:650}
-.bs-empty-hint{max-width:24ch;margin:0;color:var(--dsw-alias-label-secondary);font-size:11px;line-height:1.5}
-.bs-empty-action{margin-top:3px;padding:5px 10px;border:1px solid var(--dsw-alias-border-l2);border-radius:7px;background:transparent;color:var(--dsw-alias-label-primary);font:inherit;font-size:11px;cursor:pointer}
-.bs-empty-action:hover{background:var(--dsw-alias-bg-layer-2)}
-.bs-no-results{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;max-width:400px;padding:24px;text-align:center}
-.bs-no-results-icon{display:inline-flex;margin-bottom:2px;color:var(--dsw-alias-label-secondary);opacity:.6}
-.bs-no-results-title{margin:0;font-size:14px;font-weight:650}
-.bs-no-results-hint{margin:0;color:var(--dsw-alias-label-secondary);font-size:12px;line-height:1.55}
-.bs-no-results-action{margin-top:4px;padding:6px 12px;border:1px solid var(--dsw-alias-border-l2);border-radius:8px;background:transparent;color:var(--dsw-alias-label-primary);font:inherit;font-size:11.5px;cursor:pointer}
-.bs-no-results-action:hover{background:var(--dsw-alias-bg-layer-2)}
-.bs-scrim{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:24px;background:color-mix(in srgb,var(--dsw-alias-label-primary) 34%,transparent);-webkit-backdrop-filter:blur(3px);backdrop-filter:blur(3px)}
-.bs-dialog{display:flex;flex-direction:column;width:min(560px,100%);animation:bs-in .18s ease;max-height:min(760px,calc(100vh - 48px));overflow:hidden;border:1px solid var(--dsw-alias-border-l2);border-radius:16px;background:var(--dsw-alias-bg-overlay);box-shadow:0 24px 80px color-mix(in srgb,var(--dsw-alias-label-primary) 24%,transparent)}
-.bs-dialog.is-wide{width:min(640px,100%)}
-.bs-dialog-head{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex:none;padding:20px 22px 0}
-.bs-dialog-heading{min-width:0}
-.bs-dialog-eyebrow{margin:0;color:var(--dsw-alias-label-secondary);font-size:9.5px;font-weight:650;letter-spacing:.16em;line-height:1.2;text-transform:uppercase}
-.bs-dialog-title{margin:6px 0 0;font-size:20px;font-weight:720;letter-spacing:-.02em;line-height:1.2}
-.bs-icon-button{display:inline-flex;align-items:center;justify-content:center;flex:none;width:30px;height:30px;padding:0;border:1px solid transparent;border-radius:8px;background:transparent;color:var(--dsw-alias-label-secondary);cursor:pointer}
-.bs-icon-button:hover{background:var(--dsw-alias-bg-layer-2);color:var(--dsw-alias-label-primary)}
-.bs-form{display:flex;flex-direction:column;min-height:0;overflow:hidden}
-.bs-dialog-body{display:flex;flex-direction:column;gap:15px;min-height:0;overflow-y:auto;padding:18px 22px 10px}
-.bs-field{display:flex;flex-direction:column;gap:6px}
-.bs-field-label{display:flex;align-items:baseline;justify-content:space-between;gap:8px;color:var(--dsw-alias-label-secondary);font-size:11.5px;font-weight:600}
-.bs-field-value{color:var(--dsw-alias-label-secondary);font-size:11px;font-variant-numeric:tabular-nums;font-weight:500}
-.bs-input,.bs-textarea{width:100%;border:1px solid var(--dsw-alias-border-l2);border-radius:9px;outline:none;background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-primary);font:inherit;font-size:13px;transition:border-color .15s ease,box-shadow .15s ease}
-.bs-input{height:38px;padding:0 11px}
-.bs-textarea{min-height:78px;padding:9px 11px;line-height:1.55;resize:vertical}
-.bs-input::placeholder,.bs-textarea::placeholder{color:var(--dsw-alias-label-secondary);opacity:.7}
-.bs-input:focus,.bs-textarea:focus{border-color:var(--dsw-alias-brand-primary);box-shadow:0 0 0 3px color-mix(in srgb,var(--dsw-alias-brand-primary) 15%,transparent)}
-.bs-input[aria-invalid="true"]{border-color:var(--dsw-alias-state-error-primary)}
-.bs-form-error{margin:0;color:var(--dsw-alias-state-error-primary);font-size:11px;line-height:1.4}
-.bs-seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;padding:3px;border:1px solid var(--dsw-alias-border-l1);border-radius:10px;background:var(--dsw-alias-bg-layer-1)}
-.bs-seg-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;height:32px;padding:0 8px;border:none;border-radius:7px;background:transparent;color:var(--dsw-alias-label-secondary);font:inherit;font-size:11.5px;white-space:nowrap;cursor:pointer;transition:background .15s ease,color .15s ease,box-shadow .15s ease}
-.bs-seg-button:hover{color:var(--dsw-alias-label-primary)}
-.bs-seg-button[aria-pressed="true"]{background:var(--dsw-alias-bg-base);color:var(--dsw-alias-label-primary);font-weight:650;box-shadow:0 1px 3px color-mix(in srgb,var(--dsw-alias-label-primary) 10%,transparent)}
-.bs-range{width:100%;height:24px;margin:2px 0 0;accent-color:var(--dsw-alias-brand-primary);cursor:pointer}
-.bs-rating-picker{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.bs-stars{display:flex;align-items:center;gap:2px}
-.bs-star-button{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;padding:0;border:none;border-radius:7px;background:transparent;color:var(--dsw-alias-border-l2);font-size:19px;line-height:1;cursor:pointer;transition:color .12s ease,transform .12s ease}
-.bs-star-button.is-on{color:var(--dsw-alias-state-warn-primary)}
-.bs-star-button:hover{transform:translateY(-1px)}
-.bs-clear-rating{padding:0;border:none;background:transparent;color:var(--dsw-alias-label-secondary);font:inherit;font-size:11px;text-decoration:underline;text-underline-offset:2px;cursor:pointer}
-.bs-clear-rating:hover{color:var(--dsw-alias-label-primary)}
-.bs-dialog-foot{display:flex;align-items:center;gap:8px;flex:none;padding:14px 22px 19px;border-top:1px solid var(--dsw-alias-border-l1);margin-top:6px}
-.bs-foot-spacer{flex:1}
-.bs-btn{display:inline-flex;align-items:center;justify-content:center;height:34px;padding:0 13px;border:1px solid transparent;border-radius:9px;font:inherit;font-size:12px;font-weight:600;white-space:nowrap;cursor:pointer;transition:background .15s ease,border-color .15s ease,color .15s ease}
-.bs-btn-secondary{border-color:var(--dsw-alias-border-l2);background:transparent;color:var(--dsw-alias-label-primary)}
-.bs-btn-secondary:hover{background:var(--dsw-alias-bg-layer-2)}
-.bs-btn-primary{background:var(--dsw-alias-brand-primary);color:var(--dsw-alias-bg-base)}
-.bs-btn-primary:hover{filter:brightness(1.06)}
-.bs-btn{gap:6px}
-.bs-btn:disabled{opacity:.5;cursor:default;filter:none}
-.bs-btn-sm{height:28px;padding:0 10px;font-size:11.5px;flex:none}
-.bs-btn-soft{border-color:color-mix(in srgb,var(--dsw-alias-brand-primary) 35%,transparent);background:color-mix(in srgb,var(--dsw-alias-brand-primary) 9%,transparent);color:var(--dsw-alias-brand-primary)}
-.bs-btn-soft:hover:not(:disabled){background:color-mix(in srgb,var(--dsw-alias-brand-primary) 15%,transparent)}
-.bs-hero{display:flex;align-items:flex-start;gap:18px}
-.bs-hero-fields{display:flex;flex-direction:column;gap:12px;flex:1;min-width:0}
-.bs-lookup{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.bs-lookup-msg{margin:0;color:var(--dsw-alias-label-secondary);font-size:11px;line-height:1.4}
-.bs-lookup-msg.is-ok{color:var(--dsw-alias-state-success-primary)}
-.bs-lookup-msg.is-error{color:var(--dsw-alias-state-error-primary)}
-.bs-lookup-msg.is-miss{color:var(--dsw-alias-state-warn-primary)}
-.bs-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.bs-field-hint{margin:0;color:var(--dsw-alias-label-secondary);font-size:10.5px;line-height:1.45;opacity:.85}
-.bs-range:disabled{opacity:.55;cursor:default}
-.bs-excerpts{display:flex;flex-direction:column;gap:6px;max-height:220px;margin:0;padding:0;overflow-y:auto;list-style:none}
-.bs-excerpt{display:flex;align-items:flex-start;gap:8px;padding:8px 6px 8px 10px;border-left:2px solid var(--dsw-alias-brand-primary);border-radius:0 8px 8px 0;background:var(--dsw-alias-bg-layer-1)}
-.bs-excerpt-body{flex:1;min-width:0}
-.bs-excerpt-text{margin:0;font-size:12px;line-height:1.6;white-space:pre-wrap}
-.bs-excerpt-meta{margin:4px 0 0;color:var(--dsw-alias-label-secondary);font-size:10.5px}
-.bs-excerpt-remove{width:26px;height:26px}
-.bs-excerpt-input{min-height:56px}
-.bs-excerpt-add{display:grid;grid-template-columns:76px minmax(0,1fr) auto;gap:8px;align-items:center}
-.bs-export-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
-.bs-export-button{height:44px}
-.bs-export-button svg{color:var(--dsw-alias-brand-primary)}
-.bs-year{display:flex;align-items:center;justify-content:center;gap:14px}
-.bs-year-label{min-width:64px;font-size:22px;font-variant-numeric:tabular-nums;font-weight:740;text-align:center}
-.bs-icon-button:disabled{opacity:.35;cursor:default}
-.bs-stat-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
-.bs-stat-tile{display:flex;flex-direction:column;gap:4px;padding:12px;border:1px solid var(--dsw-alias-border-l1);border-radius:12px;background:var(--dsw-alias-bg-layer-1);color:var(--dsw-alias-label-secondary);font-size:10.5px}
-.bs-stat-tile strong{color:var(--dsw-alias-label-primary);font-size:22px;font-variant-numeric:tabular-nums;font-weight:720;line-height:1}
-.bs-months{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:end;gap:5px;height:120px;padding:6px 0 0}
-.bs-month{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%;min-width:0}
-.bs-month-bar{width:100%;min-height:2px;border-radius:5px 5px 2px 2px;background:var(--dsw-alias-state-success-primary);opacity:.85}
-.bs-month-count{color:var(--dsw-alias-label-secondary);font-size:10px;font-variant-numeric:tabular-nums}
-.bs-month-label{color:var(--dsw-alias-label-secondary);font-size:10px}
-.bs-finished-list{display:flex;flex-direction:column;gap:4px;margin:0;padding:0;list-style:none}
-.bs-finished-item{display:flex;align-items:center;gap:10px;width:100%;padding:6px 8px;border:none;border-radius:9px;background:transparent;color:inherit;font:inherit;text-align:left;cursor:pointer}
-.bs-finished-item:hover{background:var(--dsw-alias-bg-layer-2)}
-.bs-finished-title{display:flex;flex-direction:column;flex:1;min-width:0;overflow:hidden;font-size:12.5px;font-weight:600;text-overflow:ellipsis;white-space:nowrap}
-.bs-finished-title small{overflow:hidden;color:var(--dsw-alias-label-secondary);font-size:10.5px;font-weight:400;text-overflow:ellipsis}
-.bs-finished-rating{color:var(--dsw-alias-state-warn-primary);font-size:11px;letter-spacing:.06em}
-.bs-cover-sm{width:28px;height:40px}
-.bs-cover-sm .bs-cover-letter{font-size:12px}
+.bs-cover-lg .bs-cover-letter,.bs-cover-tile .bs-cover-letter{font-size:var(--bs-fs-xl)}
+.bs-cover-sm{width:28px;height:40px;border-radius:2px 4px 4px 2px}
 .bs-cover-sm::after{left:15px}
-.bs-stat-button{border:none;background:transparent;font-family:inherit;text-align:left;cursor:pointer}
-.bs-stat-button:hover{background:var(--dsw-alias-bg-layer-2)}
-.bs-stat-button:focus-visible{outline:2px solid var(--dsw-alias-brand-primary);outline-offset:-2px}
-.bs-storage.is-merged .bs-storage-dot{background:var(--dsw-alias-brand-primary)}
-.bs-import-hint{margin:0;color:var(--dsw-alias-label-secondary);font-size:12px;line-height:1.6}
-.bs-drop{border-radius:10px;transition:box-shadow .15s ease}
-.bs-drop.is-dragging{box-shadow:0 0 0 2px var(--dsw-alias-brand-primary)}
-.bs-import-text{min-height:170px;font-size:12.5px;line-height:1.7}
-.bs-import-row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
-.bs-import-file{overflow:hidden;max-width:260px;color:var(--dsw-alias-label-secondary);font-size:11.5px;text-overflow:ellipsis;white-space:nowrap}
-.bs-check{display:flex;align-items:center;gap:8px;color:var(--dsw-alias-label-primary);font-size:12px;cursor:pointer;user-select:none}
-.bs-check input{width:15px;height:15px;margin:0;accent-color:var(--dsw-alias-brand-primary)}
-.bs-check svg{color:var(--dsw-alias-brand-primary)}
-.bs-import-preview{display:flex;flex-direction:column;gap:8px;padding:11px 12px;border:1px dashed var(--dsw-alias-border-l2);border-radius:10px}
-.bs-import-count{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin:0;font-size:12px;font-weight:650}
-.bs-import-dup{color:var(--dsw-alias-label-secondary);font-size:11px;font-weight:500}
+.bs-cover-sm .bs-cover-letter{font-size:var(--bs-fs-s)}
+.bs-book-info{display:flex;flex-direction:column;gap:2px;min-width:0;flex:1}
+.bs-book-title{display:-webkit-box;overflow:hidden;font-size:var(--bs-fs-m);font-weight:600;line-height:1.4;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.bs-book-author{overflow:hidden;color:var(--bs-ink-2);font-size:var(--bs-fs-s);line-height:1.5;text-overflow:ellipsis;white-space:nowrap}
+.bs-book-meta{display:flex;flex-wrap:wrap;column-gap:8px;overflow:hidden;max-height:3em;color:var(--bs-ink-2);font-size:var(--bs-fs-s);line-height:1.5}
+.bs-meta-part{white-space:nowrap}
+.bs-desc,.bs-note{display:-webkit-box;overflow:hidden;margin:12px 0 0;color:var(--bs-ink-2);font-size:var(--bs-fs-s);line-height:1.6;-webkit-box-orient:vertical;-webkit-line-clamp:3}
+.bs-note{color:var(--bs-ink)}
+.bs-progress{margin-top:12px}
+.bs-progress-meta{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:6px;color:var(--bs-ink-2);font-size:var(--bs-fs-s);font-variant-numeric:tabular-nums}
+.bs-track{height:4px;overflow:hidden;border-radius:999px;background:var(--bs-sunken)}
+.bs-fill{display:block;height:100%;border-radius:inherit;background:var(--bs-accent);transition:width .3s ease}
+.bs-mini-stars{display:inline-block;color:var(--bs-ink);font-size:var(--bs-fs-s);letter-spacing:.1em;line-height:1.5;white-space:nowrap}
+.bs-card>.bs-mini-stars{margin-top:8px}
+.bs-mini-stars .is-off{color:var(--bs-ink-2)}
+.bs-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.bs-tag{display:inline-flex;align-items:center;gap:6px;max-width:100%;min-height:24px;overflow:hidden;padding:0 8px;border:none;border-radius:999px;background:var(--bs-sunken);color:var(--bs-ink-2);font-size:var(--bs-fs-s);text-overflow:ellipsis;white-space:nowrap;cursor:pointer}
+.bs-tag:hover{background:var(--bs-hover);color:var(--bs-ink)}
+.bs-tag.is-excerpts{background:transparent;padding:0 2px}
+span.bs-tag{cursor:default}
+.bs-tag-count{font-variant-numeric:tabular-nums}
+.bs-card-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:12px}
+.bs-status-select{height:28px;max-width:140px;padding:0 26px 0 10px;border:1px solid var(--bs-line);border-radius:var(--bs-r-s);outline:none;appearance:none;background:transparent;color:var(--bs-ink-2);font-size:var(--bs-fs-s);cursor:pointer}
+.bs-status-select:hover{border-color:var(--bs-line-strong);color:var(--bs-ink)}
+.bs-date{color:var(--bs-ink-2);font-size:var(--bs-fs-s);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bs-empty-add{display:flex;align-items:center;justify-content:center;gap:6px;min-height:68px;padding:12px;border:1px dashed var(--bs-line-strong);border-radius:var(--bs-r-l);background:transparent;color:var(--bs-ink-2);font-size:var(--bs-fs-m);cursor:pointer}
+.bs-empty-add:hover{background:var(--bs-sunken);color:var(--bs-ink)}
+.bs-welcome{display:flex;flex-direction:column;align-items:stretch;justify-content:center;gap:8px;flex:1;max-width:440px;margin:0 auto;padding:48px 24px;text-align:center}
+.bs-welcome-icon{display:inline-flex;align-self:center;margin-bottom:8px;color:var(--bs-ink-2)}
+.bs-welcome-title{margin:0;font-size:var(--bs-fs-l);font-weight:600;line-height:1.4}
+.bs-welcome-hint{margin:0;text-wrap:balance;color:var(--bs-ink-2);font-size:var(--bs-fs-m);line-height:1.6}
+.bs-welcome-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:16px}
+.bs-flat{display:flex;flex-direction:column;flex:1;min-height:0;padding:20px var(--bs-gutter) 0}
+.bs-tabs{display:flex;align-items:center;gap:4px;flex:none;padding-bottom:12px;border-bottom:1px solid var(--bs-line);overflow-x:auto}
+.bs-tablist{display:flex;align-items:center;gap:4px}
+.bs-tabs-spacer{flex:1}
+.bs-tab{display:inline-flex;align-items:center;gap:6px;height:var(--bs-control);padding:0 10px;border:none;border-radius:var(--bs-r-m);background:transparent;color:var(--bs-ink-2);font-size:var(--bs-fs-m);white-space:nowrap;cursor:pointer}
+.bs-tab:hover{background:var(--bs-hover);color:var(--bs-ink)}
+.bs-tab[aria-selected="true"]{background:var(--bs-sunken);color:var(--bs-ink);font-weight:600}
+.bs-tab[data-status="reading"] svg{color:var(--bs-accent)}
+.bs-tabs .bs-col-add{flex:none;margin-left:0}
+.bs-flat-body{display:flex;flex-direction:column;flex:1;min-height:0;overflow-y:auto;padding:8px 0 24px;scrollbar-width:thin;scrollbar-color:var(--bs-line-strong) transparent}
+.bs-flat-body>.bs-empty-add{margin-top:8px}
+.bs-list{display:flex;flex-direction:column}
+.bs-list-row{display:grid;grid-template-columns:28px minmax(160px,2fr) minmax(0,1.4fr) 132px auto 112px;align-items:center;gap:12px;padding:8px;border-bottom:1px solid var(--bs-line)}
+.bs-list-row:hover{background:var(--bs-sunken)}
+.bs-list-row.is-syncing .bs-list-main{animation:bs-pulse 1.2s ease-in-out infinite}
+.bs-list-main{display:flex;flex-direction:column;justify-content:center;min-width:0;min-height:40px;padding:0;border:none;background:transparent;text-align:left;cursor:pointer}
+.bs-list-title{overflow:hidden;font-size:var(--bs-fs-m);font-weight:600;line-height:1.4;text-overflow:ellipsis;white-space:nowrap}
+.bs-list-author{overflow:hidden;color:var(--bs-ink-2);font-size:var(--bs-fs-s);text-overflow:ellipsis;white-space:nowrap}
+.bs-list-tags{display:flex;gap:4px;min-width:0;overflow:hidden}
+.bs-list-tags .bs-tag{flex:none}
+.bs-list-state{display:flex;align-items:center;min-width:0}
+.bs-row-progress{display:flex;align-items:center;gap:8px;width:100%;color:var(--bs-ink-2);font-size:var(--bs-fs-s);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bs-row-progress .bs-track{flex:1}
+.bs-list-date{text-align:right}
+.bs-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:24px 16px;padding-top:12px}
+.bs-tile{display:flex;flex-direction:column;gap:4px;min-width:0;padding:0;border:none;background:transparent;text-align:left;cursor:pointer}
+.bs-tile-cover{position:relative;display:block;margin-bottom:4px}
+.bs-tile.is-syncing .bs-tile-cover{animation:bs-pulse 1.2s ease-in-out infinite}
+.bs-cover.bs-cover-tile{width:100%;height:auto;aspect-ratio:2/3;border-radius:4px 8px 8px 4px}
+.bs-cover.bs-cover-tile::after{left:58%}
+.bs-tile-badge{position:absolute;top:6px;left:6px;z-index:3;display:inline-flex;align-items:center;justify-content:center;width:24px;height:24px;border-radius:50%;background:rgba(0,0,0,.5);color:#fff}
+.bs-tile[data-status="reading"] .bs-tile-badge{background:var(--bs-accent);color:var(--bs-on-accent)}
+.bs-tile-progress{position:absolute;right:6px;bottom:6px;left:6px;z-index:3;height:4px;overflow:hidden;border-radius:999px;background:rgba(255,255,255,.6)}
+.bs-tile-progress span{display:block;height:100%;border-radius:inherit;background:var(--bs-accent)}
+.bs-tile-title{display:-webkit-box;overflow:hidden;font-size:var(--bs-fs-m);font-weight:600;line-height:1.4;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.bs-tile-sub{overflow:hidden;color:var(--bs-ink-2);font-size:var(--bs-fs-s);text-overflow:ellipsis;white-space:nowrap}
+.bs-tile:hover .bs-tile-title{text-decoration:underline;text-decoration-color:var(--bs-line-strong);text-underline-offset:3px}
+.bs-more{display:flex;justify-content:center;padding:16px 0 4px;grid-column:1/-1}
+.bs-no-results{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;flex:1;padding:48px 24px;text-align:center}
+.bs-no-results-icon{display:inline-flex;color:var(--bs-ink-2)}
+.bs-no-results-title{margin:0;font-size:var(--bs-fs-l);font-weight:600}
+.bs-scrim{position:fixed;inset:0;z-index:90;display:flex;align-items:center;justify-content:center;padding:24px;background:var(--bs-scrim)}
+.bs-dialog{display:flex;flex-direction:column;width:min(560px,100%);max-height:min(800px,calc(100vh - 48px));overflow:hidden;border-radius:var(--bs-r-xl);background:var(--bs-surface);box-shadow:var(--bs-shadow);animation:bs-in .16s ease}
+.bs-dialog.is-wide{width:min(640px,100%)}
+.bs-dialog-head{display:flex;align-items:center;justify-content:space-between;gap:16px;flex:none;padding:20px 24px 0}
+.bs-dialog-title{margin:0;font-size:var(--bs-fs-l);font-weight:600;line-height:1.4}
+.bs-icon-button{display:inline-flex;align-items:center;justify-content:center;flex:none;width:32px;height:32px;padding:0;border:none;border-radius:var(--bs-r-m);background:transparent;color:var(--bs-ink-2);cursor:pointer}
+.bs-icon-button:hover:not(:disabled){background:var(--bs-hover);color:var(--bs-ink)}
+.bs-icon-button:disabled{opacity:.35;cursor:default}
+.bs-form{display:flex;flex-direction:column;min-height:0;overflow:hidden}
+.bs-dialog-body{display:flex;flex-direction:column;gap:20px;min-height:0;overflow-y:auto;padding:20px 24px}
+.bs-dialog-text{margin:0;text-wrap:pretty;color:var(--bs-ink-2);font-size:var(--bs-fs-m);line-height:1.6}
+.bs-field{display:flex;flex-direction:column;gap:6px;margin:0}
+.bs-field-label{display:flex;align-items:baseline;justify-content:space-between;gap:8px;margin:0;color:var(--bs-ink-2);font-size:var(--bs-fs-s);font-weight:600}
+.bs-field-value{font-variant-numeric:tabular-nums;font-weight:400}
+.bs-input,.bs-textarea{width:100%;border:1px solid var(--bs-line-strong);border-radius:var(--bs-r-m);outline:none;background:var(--bs-surface);font-size:var(--bs-fs-m)}
+.bs-input{height:36px;padding:0 10px}
+.bs-textarea{min-height:80px;padding:8px 10px;line-height:1.6;resize:vertical}
+.bs-input[aria-invalid="true"]{border-color:var(--bs-danger)}
+.bs-form-error{margin:0;color:var(--bs-danger);font-size:var(--bs-fs-s)}
+.bs-seg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;padding:3px;border-radius:10px;background:var(--bs-sunken)}
+.bs-seg-button{display:inline-flex;align-items:center;justify-content:center;gap:6px;min-height:30px;padding:0 8px;border:none;border-radius:7px;background:transparent;color:var(--bs-ink-2);font-size:var(--bs-fs-m);cursor:pointer}
+.bs-seg-button:hover{color:var(--bs-ink)}
+.bs-seg-button[aria-pressed="true"]{background:var(--bs-surface);color:var(--bs-ink);font-weight:600}
+.bs-range{width:100%;height:24px;margin:0;accent-color:var(--bs-accent);cursor:pointer}
+.bs-rating-picker{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bs-stars{display:flex;align-items:center;gap:2px}
+.bs-star-button{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;padding:0;border:none;border-radius:var(--bs-r-s);background:transparent;color:var(--bs-ink-2);font-size:var(--bs-fs-l);line-height:1;cursor:pointer}
+.bs-star-button.is-on{color:var(--bs-ink)}
+.bs-star-button:hover{background:var(--bs-hover)}
+.bs-clear-rating{min-height:24px;padding:0 4px;border:none;background:transparent;color:var(--bs-ink-2);font-size:var(--bs-fs-s);cursor:pointer}
+.bs-clear-rating:hover{color:var(--bs-ink)}
+.bs-dialog-foot{display:flex;align-items:center;gap:8px;flex:none;padding:16px 24px 20px;border-top:1px solid var(--bs-line)}
+.bs-foot-spacer{flex:1}
+.bs-more-fields{align-self:flex-start;margin-left:-8px}
+.bs-hero{display:flex;align-items:flex-start;gap:20px}
+.bs-hero-fields{display:flex;flex-direction:column;gap:12px;flex:1;min-width:0}
+.bs-lookup{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bs-lookup-msg{margin:0;color:var(--bs-ink-2);font-size:var(--bs-fs-s);line-height:1.5}
+.bs-lookup-msg.is-error{color:var(--bs-danger)}
+.bs-row{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.bs-excerpts{display:flex;flex-direction:column;gap:8px;max-height:240px;margin:0;padding:0;overflow-y:auto;list-style:none}
+.bs-excerpt{display:flex;align-items:flex-start;gap:8px;padding:8px 4px 8px 12px;border-left:2px solid var(--bs-line-strong)}
+.bs-excerpt-body{flex:1;min-width:0}
+.bs-excerpt-text{margin:0;font-size:var(--bs-fs-m);line-height:1.6;white-space:pre-wrap}
+.bs-excerpt-meta{display:flex;flex-wrap:wrap;column-gap:8px;margin:4px 0 0;color:var(--bs-ink-2);font-size:var(--bs-fs-s)}
+.bs-excerpt-input{min-height:60px}
+.bs-excerpt-add{display:grid;grid-template-columns:80px minmax(0,1fr) auto;gap:8px;align-items:center}
+.bs-export-grid{display:flex;flex-direction:column;gap:8px}
+.bs-export-button{justify-content:flex-start;min-height:40px;text-align:left}
+.bs-year{display:flex;align-items:center;justify-content:center;gap:16px}
+.bs-year-label{min-width:64px;font-size:var(--bs-fs-l);font-variant-numeric:tabular-nums;font-weight:600;text-align:center}
+.bs-stat-tiles{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0}
+.bs-stat-tile{display:flex;flex-direction:column;justify-content:flex-start;gap:4px;padding:12px;border-radius:var(--bs-r-l);background:var(--bs-sunken)}
+.bs-stat-tile dt{color:var(--bs-ink-2);font-size:var(--bs-fs-s);line-height:1.4}
+.bs-stat-tile dd{order:-1;margin:0;font-size:var(--bs-fs-xl);font-variant-numeric:tabular-nums;font-weight:600;line-height:1.2;overflow-wrap:anywhere}
+.bs-months{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));align-items:end;gap:4px;height:128px}
+.bs-month{display:flex;flex-direction:column;align-items:center;justify-content:flex-end;gap:4px;height:100%;min-width:0}
+.bs-month-bar{width:100%;min-height:2px;border-radius:4px 4px 1px 1px;background:var(--bs-accent)}
+.bs-month-count,.bs-month-label{color:var(--bs-ink-2);font-size:var(--bs-fs-s);font-variant-numeric:tabular-nums;white-space:nowrap}
+.bs-finished-list{display:flex;flex-direction:column;margin:0;padding:0;list-style:none}
+.bs-finished-item{display:flex;align-items:center;gap:12px;width:100%;padding:6px 8px;border:none;border-radius:var(--bs-r-m);background:transparent;text-align:left;cursor:pointer}
+.bs-finished-item:hover{background:var(--bs-sunken)}
+.bs-finished-title{display:flex;flex-direction:column;flex:1;min-width:0;overflow:hidden;font-size:var(--bs-fs-m);font-weight:600;text-overflow:ellipsis;white-space:nowrap}
+.bs-finished-title small{overflow:hidden;color:var(--bs-ink-2);font-size:var(--bs-fs-s);font-weight:400;text-overflow:ellipsis}
+.bs-drop{border-radius:var(--bs-r-m)}
+.bs-drop.is-dragging .bs-textarea{border-color:var(--bs-accent);background:var(--bs-accent-soft)}
+.bs-import-text{min-height:168px}
+.bs-import-row{display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.bs-import-file{overflow:hidden;max-width:260px;color:var(--bs-ink-2);font-size:var(--bs-fs-s);text-overflow:ellipsis;white-space:nowrap}
+.bs-check{display:flex;align-items:center;gap:8px;min-height:24px;font-size:var(--bs-fs-m);cursor:pointer;user-select:none}
+.bs-check input{width:16px;height:16px;margin:0;accent-color:var(--bs-accent)}
+.bs-import-preview{display:flex;flex-direction:column;gap:8px}
+.bs-import-count{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0;font-size:var(--bs-fs-m);font-weight:600}
+.bs-import-dup{color:var(--bs-ink-2);font-size:var(--bs-fs-s);font-weight:400}
 .bs-chips{display:flex;flex-wrap:wrap;gap:6px;margin:0;padding:0;list-style:none}
-.bs-chip{display:inline-flex;align-items:baseline;gap:6px;max-width:100%;padding:4px 9px;border-radius:999px;background:var(--dsw-alias-bg-layer-2);font-size:11px}
+.bs-chip{display:inline-flex;align-items:baseline;gap:6px;max-width:100%;padding:2px 8px;border-radius:999px;background:var(--bs-sunken);font-size:var(--bs-fs-s);line-height:1.6}
 .bs-chip strong{overflow:hidden;font-weight:600;text-overflow:ellipsis;white-space:nowrap}
-.bs-chip span{color:var(--dsw-alias-label-secondary);white-space:nowrap}
-.bs-chip.is-more{color:var(--dsw-alias-label-secondary)}
-.bs-btn-danger{padding:0 8px;background:transparent;color:var(--dsw-alias-state-error-primary);font-weight:500}
-.bs-btn-danger:hover{background:color-mix(in srgb,var(--dsw-alias-state-error-primary) 8%,transparent)}
-.bs-btn-danger-confirm{padding:0 9px;border-color:var(--dsw-alias-state-error-primary);background:var(--dsw-alias-state-error-primary);color:var(--dsw-alias-bg-base);font-weight:600}
+.bs-chip span{color:var(--bs-ink-2);white-space:nowrap}
+.bs-chip.is-more{color:var(--bs-ink-2)}
+.bs-toast{position:fixed;left:50%;bottom:24px;z-index:95;display:flex;align-items:center;gap:12px;max-width:calc(100vw - 48px);padding:8px 8px 8px 16px;border-radius:var(--bs-r-l);background:var(--bs-ink);color:var(--bs-bg);font-size:var(--bs-fs-m);box-shadow:var(--bs-shadow);transform:translateX(-50%);animation:bs-in .16s ease}
+.bs-toast-text{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bs-toast .bs-btn{min-height:28px;color:var(--bs-bg);font-weight:600}
+.bs-toast .bs-btn:hover{background:color-mix(in srgb,var(--bs-bg) 14%,transparent)}
+.bs-toast.is-plain{padding:8px 16px}
 @media (max-width:980px){
-  .bs-list-row{grid-template-columns:28px minmax(0,1fr) 120px auto}
+  .bs-list-row{grid-template-columns:28px minmax(0,1fr) 112px auto}
   .bs-list-tags,.bs-list-date{display:none}
-  .bs-board{grid-template-columns:minmax(0,1fr);overflow-y:auto}
-  .bs-column{min-height:210px;overflow:visible}
-  .bs-col-body{overflow:visible;flex:none}
+  .bs-board{grid-template-columns:minmax(0,1fr);grid-auto-rows:max-content;align-content:start;gap:32px;overflow-y:auto;padding-bottom:24px}
+  .bs-col-body{overflow:visible;flex:none;padding-bottom:0}
 }
 @media (max-width:640px){
-  .bs-head{flex-wrap:wrap;gap:12px}
-  .bs-stats{width:100%}
-  .bs-stat{flex:1}
-  .bs-actions{width:100%}
-  .bs-actions>*{flex:1;justify-content:center}
-  .bs-hero{flex-direction:column;align-items:center}
-  .bs-hero-fields{width:100%}
+  .bs-search{flex-basis:100%;max-width:none}
+  .bs-list-row{grid-template-columns:28px minmax(0,1fr) auto}
+  .bs-list-state{display:none}
   .bs-toolbar-spacer{display:none}
-  .bs-toolbar-meta{width:100%}
+  .bs-actions{flex:1 1 100%}
+  .bs-actions [data-action]:not([data-action="add"]){width:var(--bs-control);padding:0}
+  .bs-actions [data-action]:not([data-action="add"]) span{display:none}
+  .bs-actions [data-action="add"]{margin-left:auto}
+  .bs-hero>.bs-cover{display:none}
+  .bs-hero-fields{width:100%}
   .bs-seg{grid-template-columns:minmax(0,1fr)}
   .bs-row{grid-template-columns:minmax(0,1fr)}
-  .bs-stat-tiles,.bs-export-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .bs-excerpt-add{grid-template-columns:76px minmax(0,1fr)}
+  .bs-stat-tiles{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .bs-excerpt-add{grid-template-columns:80px minmax(0,1fr)}
+  .bs-scrim{padding:12px}
+  .bs-dialog-head{padding:16px 16px 0}
+  .bs-dialog-body{padding:16px}
+  .bs-dialog-foot{padding:12px 16px 16px}
+}
+@media (pointer:coarse){
+  .bs-page{--bs-control:44px}
+  .bs-status-select,.bs-col-add,.bs-icon-button,.bs-star-button,.bs-btn-sm,.bs-toast .bs-btn{min-height:44px;min-width:44px}
+  .bs-tag{min-height:32px}
 }
 @media (prefers-reduced-motion:reduce){
   .bs-page *{transition:none!important;animation:none!important}
 }
 `
 
-    function SyncBanner({ sync, tt, onStop, onDismiss }) {
+    function SyncBanner({ sync, tt, activeLocale, onStop, onDismiss }) {
       const percent = sync.total === 0 ? 100 : Math.round((sync.done / sync.total) * 100)
       if (sync.running) {
         return h(
           'div',
-          { className: 'bs-sync', role: 'status' },
-          h('span', { className: 'bs-sync-icon' }, h(SpinnerIcon, { size: 15 })),
+          { className: 'bs-notice', role: 'status' },
+          h('span', { className: 'bs-notice-icon' }, h(SpinnerIcon, { size: 16 })),
           h(
             'div',
-            { className: 'bs-sync-body' },
+            { className: 'bs-notice-body' },
             h(
               'p',
-              { className: 'bs-sync-text' },
-              h('strong', null, tt('sync.running', { done: sync.done, total: sync.total })),
+              { className: 'bs-notice-text' },
+              h('strong', null, tt('sync.running', { done: formatNumber(sync.done, activeLocale), total: formatNumber(sync.total, activeLocale) })),
               sync.current !== '' &&
                 h('span', { className: 'bs-sync-current' }, tt('sync.current', { title: sync.current })),
             ),
@@ -3622,22 +3476,39 @@ window.__ModuleLoader__.load({
             tt('action.stop')),
         )
       }
+      const count = value => formatNumber(value, activeLocale)
       const offline = sync.failed > 0 && sync.updated === 0 && sync.missed === 0
       const parts = []
       if (offline) {
         parts.push(tt('sync.offline'))
       } else {
-        parts.push(tt(sync.cancelled ? 'sync.cancelled' : 'sync.done', { updated: sync.updated }))
-        if (sync.missed > 0) parts.push(tt('sync.missed', { count: sync.missed }))
-        if (sync.failed > 0) parts.push(tt('sync.failed', { count: sync.failed }))
+        parts.push(sync.cancelled
+          ? tt('sync.cancelled', { count: count(sync.updated) })
+          : plural(tt, sync.updated, 'sync.done', 'sync.doneOne', activeLocale))
+        if (sync.missed > 0) parts.push(tt('sync.missed', { count: count(sync.missed) }))
+        if (sync.failed > 0) parts.push(tt('sync.failed', { count: count(sync.failed) }))
       }
       return h(
         'div',
-        { className: offline ? 'bs-sync is-error' : 'bs-sync is-done', role: 'status' },
-        h('span', { className: 'bs-sync-icon' }, offline ? h(CloseIcon, { size: 14 }) : h(ReadIcon, { size: 15 })),
-        h('p', { className: 'bs-sync-text' }, parts.join('，')),
+        { className: 'bs-notice', role: 'status' },
+        h('span', { className: 'bs-notice-icon' }, offline ? h(CloseIcon, { size: 16 }) : h(ReadIcon, { size: 16 })),
+        h('p', { className: 'bs-notice-text' }, parts.map((part, index) => h('span', { key: index }, part))),
         h('button', { type: 'button', className: 'bs-btn bs-btn-secondary bs-btn-sm', onClick: onDismiss },
           tt('action.dismiss')),
+      )
+    }
+
+    /** A floating one-liner; `action` (Undo) is optional. Shadow allowed: it really floats. */
+    function Toast({ toast, onAction, onClose }) {
+      React.useEffect(() => {
+        const timer = setTimeout(onClose, toast.action ? 6000 : 4000)
+        return () => clearTimeout(timer)
+      }, [toast, onClose])
+      return h(
+        'div',
+        { className: toast.action ? 'bs-toast' : 'bs-toast is-plain', role: 'status' },
+        h('span', { className: 'bs-toast-text' }, toast.text),
+        toast.action && h('button', { type: 'button', className: 'bs-btn bs-btn-quiet', onClick: onAction }, toast.action),
       )
     }
 
@@ -3666,7 +3537,7 @@ window.__ModuleLoader__.load({
       const [saveFailed, setSaveFailed] = React.useState(false)
       const [storagePhase, setStoragePhase] = React.useState('loading')
       const [storageReady, setStorageReady] = React.useState(false)
-      const [mergedNotice, setMergedNotice] = React.useState(0)
+      const [toast, setToast] = React.useState(null)
       const [sync, setSync] = React.useState(null)
       const [syncingIds, setSyncingIds] = React.useState(() => new Set())
       const syncAbort = React.useRef(null)
@@ -3698,7 +3569,7 @@ window.__ModuleLoader__.load({
       }, [])
 
       const noteMerged = React.useCallback(() => {
-        if (mountedRef.current) setMergedNotice(Date.now())
+        if (mountedRef.current) setToast({ kind: 'merged', id: Date.now() })
       }, [])
 
       /**
@@ -3806,7 +3677,7 @@ window.__ModuleLoader__.load({
             const pending = readPendingShelf()
             onlineRef.current = true
             if (remote.books === null) {
-              // First Host use: the browser copy (or seeds) becomes revision 1.
+              // First Host use: the browser copy (possibly empty) becomes revision 1.
               acceptHost(0, [])
               replaceBooks(pending !== null ? pending.books : booksRef.current)
             } else if (pending === null) {
@@ -3923,11 +3794,14 @@ window.__ModuleLoader__.load({
         }
       }, [storageReady, acceptHost, replaceBooks, adoptRemote, noteMerged])
 
+      const closeToast = React.useCallback(() => setToast(null), [])
+
+      /** A clean lookup run needs no acknowledgement; misses and failures stay until dismissed. */
       React.useEffect(() => {
-        if (mergedNotice === 0) return undefined
-        const timer = setTimeout(() => setMergedNotice(0), 4000)
+        if (sync === null || sync.running || sync.missed > 0 || sync.failed > 0 || sync.cancelled) return undefined
+        const timer = setTimeout(() => setSync(null), 4000)
         return () => clearTimeout(timer)
-      }, [mergedNotice])
+      }, [sync])
 
       React.useEffect(() => () => {
         mountedRef.current = false
@@ -4055,10 +3929,26 @@ window.__ModuleLoader__.load({
         setDialog(null)
       }
 
+      /** Delete at once and offer Undo, instead of asking first. */
       function deleteBook() {
         if (dialog.mode !== 'edit') return
+        const index = booksRef.current.findIndex(book => book.id === dialog.book.id)
+        const removed = booksRef.current[index]
         setBooks(current => current.filter(book => book.id !== dialog.book.id))
         setDialog(null)
+        if (removed !== undefined) setToast({ kind: 'deleted', id: Date.now(), book: removed, index })
+      }
+
+      function undoDelete() {
+        if (toast === null || toast.kind !== 'deleted') return
+        const { book, index } = toast
+        setBooks(current => {
+          if (current.some(item => item.id === book.id)) return current
+          const next = current.slice()
+          next.splice(Math.min(Math.max(index, 0), next.length), 0, { ...book, updatedAt: Date.now() })
+          return next
+        })
+        setToast(null)
       }
 
       function importBooks(items, status, autoFill) {
@@ -4077,9 +3967,9 @@ window.__ModuleLoader__.load({
         if (autoFill) runSync(created.filter(needsMetadata), false)
       }
 
+      /** Only books never looked up; re-fetching everything would overwrite the user's own edits. */
       function syncAll() {
         if (incomplete.length > 0) runSync(incomplete, false)
-        else runSync(books, true)
       }
 
       function changeStatus(id, status) {
@@ -4092,12 +3982,6 @@ window.__ModuleLoader__.load({
 
       const searchActive = query.trim() !== ''
       const syncing = sync !== null && sync.running
-      const storageLabel = mergedNotice !== 0 && storagePhase !== 'offline' ? tt('storage.merged') : tt(
-        storagePhase === 'loading' ? 'storage.loading'
-          : storagePhase === 'saving' ? 'storage.saving'
-            : storagePhase === 'offline' ? 'storage.offline'
-              : 'storage.host',
-      )
       function changeView(next) {
         setView(next)
         try {
@@ -4132,13 +4016,13 @@ window.__ModuleLoader__.load({
         : h(
             'div',
             { className: 'bs-flat' },
-            h(StatusTabs, { filter: statusFilter, counts: statusCounts, tt, onChange: setStatusFilter, onAdd: addBook }),
+            h(StatusTabs, { filter: statusFilter, counts: statusCounts, tt, activeLocale, onChange: setStatusFilter, onAdd: addBook }),
             h(
               'div',
               // Keyed so switching view, tab, search, or sort starts back at the top.
               { className: 'bs-flat-body', key: flatReset },
               flatBooks.length === 0
-                ? h(EmptyShelf, { tt, onAdd: () => addBook(statusFilter === 'all' ? 'want' : statusFilter) })
+                ? h(EmptyColumn, { status: statusFilter === 'all' ? 'want' : statusFilter, tt, onAdd: () => addBook(statusFilter === 'all' ? 'want' : statusFilter) })
                 : view === 'list' ? h(ListView, flatProps) : h(GridView, flatProps),
             ),
           )
@@ -4155,6 +4039,28 @@ window.__ModuleLoader__.load({
         syncingIds,
       }))
 
+      const shelfEmpty = books.length === 0 && storageReady
+      const actionButton = (action, icon, label, onClick, extra) => h(
+        'button',
+        { type: 'button', className: 'bs-btn bs-btn-secondary', 'data-action': action, 'aria-label': label, onClick, ...(extra || {}) },
+        icon,
+        h('span', null, label),
+      )
+      let body
+      if (shelfEmpty) {
+        body = h(EmptyShelf, { tt, onAdd: () => addBook('want'), onImport: () => setDialog({ mode: 'import' }) })
+      } else if (searchActive && visibleBooks.length === 0) {
+        body = h(
+          'div',
+          { className: 'bs-no-results' },
+          h('span', { className: 'bs-no-results-icon', 'aria-hidden': true }, h(SearchIcon, { size: 32 })),
+          h('p', { className: 'bs-no-results-title' }, tt('search.emptyTitle')),
+          h('button', { type: 'button', className: 'bs-btn bs-btn-secondary', onClick: () => setQuery('') }, tt('search.clear')),
+        )
+      } else {
+        body = view === 'board' ? h('div', { className: 'bs-board' }, columnNodes) : shelfNode
+      }
+
       return h(
         'div',
         { className: 'bs-page', 'data-dsh-plugin': 'bookshelf' },
@@ -4162,50 +4068,18 @@ window.__ModuleLoader__.load({
         h(
           'header',
           { className: 'bs-head' },
-          h(
-            'div',
-            { className: 'bs-heading' },
-            h(
-              'p',
-              { className: 'bs-kicker' },
-              h('span', { className: 'bs-kicker-mark', 'aria-hidden': true },
-                h(ShelfMark, { size: 13 })),
-              h('span', null, tt('panel.eyebrow')),
-            ),
-            h('h1', { className: 'bs-title' }, tt('panel.title')),
-            h('p', { className: 'bs-subtitle' }, tt('panel.subtitle')),
-          ),
-          h(
-            'div',
-            { className: 'bs-stats', 'aria-label': tt('panel.summary', { reading: readingCount, read: readCount }) },
-            h('div', { className: 'bs-stat' },
-              h('strong', null, String(books.length)), h('span', null, tt('panel.shelfCount'))),
-            h('div', { className: 'bs-stat', 'data-status': 'reading' },
-              h('strong', null, String(readingCount)), h('span', null, tt('status.reading'))),
-            h('div', { className: 'bs-stat', 'data-status': 'read' },
-              h('strong', null, String(readCount)), h('span', null, tt('status.read'))),
-            h(
-              'button',
-              {
-                type: 'button',
-                className: 'bs-stat bs-stat-button',
-                'data-status': 'read',
-                onClick: () => setDialog({ mode: 'stats' }),
-                title: tt('stats.open', { year: currentYear }),
-                'aria-label': tt('stats.open', { year: currentYear }),
-              },
-              h('strong', null, String(finishedThisYear)),
-              h('span', null, `${currentYear} ${tt('stats.thisYear')}`),
-            ),
-          ),
+          h('h1', { className: 'bs-title' }, tt('panel.title')),
+          finishedThisYear > 0 &&
+            h('p', { className: 'bs-summary' },
+              plural(tt, finishedThisYear, 'panel.finishedThisYear', 'panel.finishedThisYearOne', activeLocale)),
         ),
-        h(
+        !shelfEmpty && h(
           'div',
           { className: 'bs-toolbar' },
           h(
             'div',
             { className: 'bs-search', role: 'search' },
-            h('span', { className: 'bs-search-icon', 'aria-hidden': true }, h(SearchIcon, { size: 15 })),
+            h('span', { className: 'bs-search-icon', 'aria-hidden': true }, h(SearchIcon, { size: 16 })),
             h('input', {
               className: 'bs-search-input',
               type: 'search',
@@ -4229,111 +4103,58 @@ window.__ModuleLoader__.load({
               ),
           ),
           h(
-            'label',
-            { className: 'bs-sort', htmlFor: 'bs-sort-select' },
-            h('span', null, tt('sort.label')),
+            'span',
+            { className: 'bs-sort' },
             h(
-              'span',
-              { className: 'bs-sort-wrap' },
-              h(
-                'select',
-                {
-                  id: 'bs-sort-select',
-                  className: 'bs-sort-select',
-                  value: sortBy,
-                  onChange: event => setSortBy(event.target.value),
-                },
-                SORT_OPTIONS.map(option =>
-                  h('option', { key: option.id, value: option.id }, tt(option.label)),
-                ),
+              'select',
+              {
+                className: 'bs-sort-select',
+                value: sortBy,
+                onChange: event => setSortBy(event.target.value),
+                'aria-label': tt('sort.label'),
+                title: tt('sort.label'),
+              },
+              SORT_OPTIONS.map(option =>
+                h('option', { key: option.id, value: option.id }, tt(option.label)),
               ),
             ),
           ),
           h(ViewSwitch, { view, tt, onChange: changeView }),
-          h(
-            'span',
-            {
-              className: `bs-storage is-${mergedNotice !== 0 && storagePhase !== 'offline' ? 'merged' : storagePhase}`,
-              title: tt('storage.hint'),
-              role: 'status',
-            },
-            h('span', { className: 'bs-storage-dot', 'aria-hidden': true }),
-            storageLabel,
-          ),
           searchActive &&
-            h('span', { className: 'bs-toolbar-meta' }, tt('panel.filteredCount', { count: visibleBooks.length })),
+            h('span', { className: 'bs-toolbar-meta' }, tt('panel.filteredCount', { count: formatNumber(visibleBooks.length, activeLocale) })),
           h('span', { className: 'bs-toolbar-spacer' }),
           h(
             'div',
             { className: 'bs-actions' },
-            h(
-              'button',
-              {
-                type: 'button',
-                className: 'bs-tool',
-                onClick: () => setDialog({ mode: 'import' }),
-                title: tt('action.importTitle'),
-              },
-              h(ImportIcon, { size: 15 }),
-              h('span', null, tt('action.import')),
-            ),
-            h(
-              'button',
-              {
-                type: 'button',
-                className: 'bs-tool',
-                onClick: () => setDialog({ mode: 'export' }),
-                title: tt('action.exportTitle'),
-              },
-              h(ExportIcon, { size: 15 }),
-              h('span', null, tt('action.export')),
-            ),
-            h(
-              'button',
-              {
-                type: 'button',
-                className: 'bs-tool',
-                onClick: syncAll,
-                disabled: syncing || books.length === 0,
-                title: tt(incomplete.length > 0 ? 'action.syncTitle' : 'action.syncAllTitle'),
-              },
-              syncing ? h(SpinnerIcon, { size: 15 }) : h(SparkIcon, { size: 15 }),
-              h('span', null, tt('action.sync')),
-              incomplete.length > 0 && !syncing &&
-                h('span', { className: 'bs-badge' }, String(incomplete.length)),
-            ),
+            incomplete.length > 0 &&
+              actionButton('lookup', syncing ? h(SpinnerIcon, { size: 16 }) : h(SparkIcon, { size: 16 }), tt('action.lookup'), syncAll, {
+                disabled: syncing,
+                title: tt('action.lookupHint'),
+              }),
+            actionButton('stats', h(ChartIcon, { size: 16 }), tt('action.stats'), () => setDialog({ mode: 'stats' })),
+            actionButton('import', h(ImportIcon, { size: 16 }), tt('action.import'), () => setDialog({ mode: 'import' }), { title: tt('action.importTitle') }),
+            actionButton('export', h(ExportIcon, { size: 16 }), tt('action.export'), () => setDialog({ mode: 'export' }), { title: tt('action.exportTitle') }),
+            h('button', { type: 'button', className: 'bs-btn bs-btn-primary', 'data-action': 'add', onClick: () => addBook(view !== 'board' && statusFilter !== 'all' ? statusFilter : 'want') },
+              h(PlusIcon, { size: 16 }), h('span', null, tt('action.add'))),
           ),
         ),
         sync !== null &&
-          h(SyncBanner, { sync, tt, onStop: stopSync, onDismiss: () => setSync(null) }),
-        saveFailed && h('p', { className: 'bs-save-error', role: 'status' }, tt('save.failed')),
-        searchActive && visibleBooks.length === 0
-          ? h(
-              'div',
-              { className: 'bs-board bs-board-empty' },
-              h(
-                'div',
-                { className: 'bs-no-results' },
-                h('span', { className: 'bs-no-results-icon', 'aria-hidden': true },
-                  h(SearchIcon, { size: 30 })),
-                h('p', { className: 'bs-no-results-title' }, tt('search.emptyTitle')),
-                h('p', { className: 'bs-no-results-hint' }, tt('search.emptyHint')),
-                h(
-                  'button',
-                  {
-                    type: 'button',
-                    className: 'bs-no-results-action',
-                    onClick: () => setQuery(''),
-                  },
-                  tt('search.emptyAction'),
-                ),
-              ),
-            )
-          : view === 'board' ? h('div', { className: 'bs-board' }, columnNodes) : shelfNode,
+          h(SyncBanner, { sync, tt, activeLocale, onStop: stopSync, onDismiss: () => setSync(null) }),
+        saveFailed && h('p', { className: 'bs-notice', role: 'status' }, tt('save.failed')),
+        body,
+        toast !== null &&
+          h(Toast, {
+            key: toast.id,
+            toast: toast.kind === 'deleted'
+              ? { text: tt('toast.deleted', { title: toast.book.title }), action: tt('action.undo') }
+              : { text: tt('toast.merged') },
+            onAction: undoDelete,
+            onClose: closeToast,
+          }),
         dialog !== null && dialog.mode === 'import' &&
-          h(ImportDialog, { books, tt, onClose: closeDialog, onImport: importBooks }),
+          h(ImportDialog, { books, tt, activeLocale, onClose: closeDialog, onImport: importBooks }),
         dialog !== null && dialog.mode === 'export' &&
-          h(ExportDialog, { books, tt, onClose: closeDialog }),
+          h(ExportDialog, { books, tt, activeLocale, onClose: closeDialog }),
         dialog !== null && dialog.mode === 'stats' &&
           h(StatsDialog, {
             books,
@@ -4353,6 +4174,7 @@ window.__ModuleLoader__.load({
             initialStatus: dialog.mode === 'create' ? dialog.status : 'want',
             book: dialog.mode === 'edit' ? dialog.book : undefined,
             tt,
+            activeLocale,
             onClose: closeDialog,
             onSubmit: submitBook,
             onDelete: deleteBook,
@@ -4371,6 +4193,9 @@ window.__ModuleLoader__.load({
         yearStats,
         parseImport,
         exportCsv,
+        loadLocalBooks,
+        formatNumber,
+        plural,
       })
     }
 

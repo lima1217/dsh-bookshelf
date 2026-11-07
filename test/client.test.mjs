@@ -55,3 +55,16 @@ test('the CSV export imports back losslessly', () => {
   assert.deepEqual(back.tags, ['x', 'y'])
   assert.equal(back.excerpts[0].text, 'passage')
 })
+
+test('a first-time user starts with an empty shelf, not sample books', () => {
+  assert.deepEqual(JSON.parse(JSON.stringify(client.loadLocalBooks())), [])
+})
+
+test('counts use the locale’s plural rule and digit grouping', () => {
+  const tt = (key, params) => ({ 'book.excerpts': '{count} quotes', 'book.excerptsOne': '{count} quote' })[key].replace('{count}', params.count)
+  assert.equal(client.plural(tt, 1, 'book.excerpts', 'book.excerptsOne', 'en-US'), '1 quote')
+  assert.equal(client.plural(tt, 2, 'book.excerpts', 'book.excerptsOne', 'en-US'), '2 quotes')
+  assert.equal(client.plural(tt, 0, 'book.excerpts', 'book.excerptsOne', 'en-US'), '0 quotes')
+  assert.equal(client.formatNumber(2445, 'en-US'), '2,445')
+  assert.equal(client.formatNumber(0.52, 'zh-CN', { style: 'percent' }), '52%')
+})
