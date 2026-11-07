@@ -4,6 +4,13 @@ DeepSeek Harness（DSH）的个人书架与阅读记录插件。书架数据保�
 
 *A personal bookshelf and reading log plugin for DeepSeek Harness. Data stays on your machine, and the DSH agent can read and update it through `bookshelf_*` tools. UI available in Chinese and English.*
 
+| | 浅色 Light | 深色 Dark |
+|---|---|---|
+| 中文 | ![中文浅色](docs/screenshots/board-zh-light.png) | ![中文深色](docs/screenshots/board-zh-dark.png) |
+| English | ![English light](docs/screenshots/board-en-light.png) | ![English dark](docs/screenshots/board-en-dark.png) |
+
+截图来自 `node dev/audit.mjs --shots`，书架里是示例数据。
+
 ## 功能
 
 - 书架面板：想读 / 在读 / 读完，记录开始和读完日期、页码进度、评分、标签、笔记
